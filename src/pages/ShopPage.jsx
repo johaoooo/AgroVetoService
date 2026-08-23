@@ -13,11 +13,9 @@ export default function ShopPage({ onAddToCart, setIsCartOpen }) {
       
       {/* Hero avec photographie haute résolution */}
       <PageHero
-        category="Approvisionnement Agropastoral Sécurisé"
         title="Boutique & Intrants Vétérinaires"
         subtitle="Commandez vos poussins d'un jour Cobb 500, aliments provenderie certifiés, compléments nutritionnels et produits d'hygiène à Pointe-Noire."
         image="https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?auto=format&fit=crop&w=1920&q=80"
-        breadcrumb={[{ label: 'Boutique & Intrants' }]}
       />
 
       {/* Rassurance de livraison & Mobile Money */}

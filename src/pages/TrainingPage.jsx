@@ -12,11 +12,9 @@ export default function TrainingPage({ showToast }) {
       
       {/* Hero avec photographie haute résolution */}
       <PageHero
-        category="Renforcement de Capacités & Autonomie"
         title="Centre de Formation & Fermes-Écoles"
         subtitle="Des formations 100% pratiques et certifiantes en élevage avicole, hygiène HACCP, fabrication de détergents et audits ISO."
         image="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=1920&q=80"
-        breadcrumb={[{ label: 'Centre de Formation' }]}
       />
 
       {/* Rassurance pédagogique sobre */}

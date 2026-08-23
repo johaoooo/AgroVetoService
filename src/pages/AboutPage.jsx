@@ -14,11 +14,9 @@ export default function AboutPage() {
       
       {/* Hero avec photographie haute résolution */}
       <PageHero
-        category="Direction Générale & Gouvernance"
         title="Présentation de la Fondatrice & Direction"
         subtitle="Découvrez le parcours, la vision et les engagements du Dr Marie-Rose Edwige Rakié POUTYA SAIZONOU."
         image="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1920&q=80"
-        breadcrumb={[{ label: 'À Propos' }]}
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">

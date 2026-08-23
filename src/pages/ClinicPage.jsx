@@ -53,11 +53,9 @@ export default function ClinicPage({ showToast }) {
       
       {/* Hero avec photographie haute résolution */}
       <PageHero
-        category="Soins Médicaux & Suivi Zootechnique"
         title="Clinique Vétérinaire & Pharmacie AVS"
         subtitle="Consultations, chirurgies, vaccinations, urgences 24h/24 & 7j/7 et suivi d'élevages agropastoraux à Pointe-Noire."
         image="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&w=1920&q=80"
-        breadcrumb={[{ label: 'Clinique Vétérinaire' }]}
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">

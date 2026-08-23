@@ -44,11 +44,9 @@ export default function PolesPage() {
       
       {/* Hero avec photographie haute résolution */}
       <PageHero
-        category="Offre Globale & Intégrée"
         title="Nos 6 Pôles d'Activités & d'Expertise"
         subtitle="Une prise en charge complète de la santé animale, de la provenderie, de la transformation agroalimentaire et des normes QHSE."
         image="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1920&q=80"
-        breadcrumb={[{ label: 'Pôles d\'Expertise' }]}
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">

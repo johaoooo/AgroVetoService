@@ -12,11 +12,9 @@ export default function QuotePage({ showToast }) {
       
       {/* Hero avec photographie haute résolution */}
       <PageHero
-        category="Accompagnement & Conformité Entreprises"
         title="Conseil en Management QHSE & Audits Normatifs"
         subtitle="Accompagnement ISO 9001, 14001, 45001, ISO 22000, démarche HACCP et formule « QHSE Partagé » pour les PME congolaises."
         image="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1920&q=80"
-        breadcrumb={[{ label: 'Devis & Audits QHSE' }]}
       />
 
       {/* Rassurance B2B sobre */}
