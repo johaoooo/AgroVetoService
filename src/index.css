@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* Configuration Dark Mode par classe pour Tailwind CSS v4 */
+@custom-variant dark (&:where(.dark, .dark *));
+
 @layer base {
   :root {
     --color-agro: #197d16;
@@ -9,26 +12,68 @@
     --color-gold: #f8ab09;
     --color-gold-dark: #d97706;
     --bg-soft: #f6f8fa;
-    --card-soft: #fcfdfe;
+    --card-soft: #ffffff;
+    --text-main: #0f172a;
+    --text-muted: #475569;
+    --border-color: #e2e8f0;
+  }
+
+  html.dark {
+    --bg-soft: #0b0f17;
+    --card-soft: #131924;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --border-color: #1e293b;
   }
 
   html {
     font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-    background-color: #f6f8fa;
-    color: #1e293b;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    background-color: var(--bg-soft);
+    color: var(--text-main);
+    transition: background-color 0.25s ease, color 0.25s ease;
   }
 
   body {
-    background-color: #f6f8fa;
-    color: #1e293b;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    background-color: var(--bg-soft);
+    color: var(--text-main);
+    transition: background-color 0.25s ease, color 0.25s ease;
   }
+}
 
-  html.dark, html.dark body {
-    background-color: #0b0f17;
-    color: #f8fafc;
-  }
+/* Adaptations globales en mode sombre */
+.dark body {
+  background-color: #0b0f17;
+  color: #f8fafc;
+}
+
+.dark .bg-white {
+  background-color: #131924 !important;
+  color: #f8fafc;
+}
+
+.dark .bg-slate-50,
+.dark .bg-slate-100 {
+  background-color: #0e141f !important;
+}
+
+.dark .border-slate-100,
+.dark .border-slate-200 {
+  border-color: #1e293b !important;
+}
+
+.dark .text-slate-900,
+.dark .text-slate-800 {
+  color: #f8fafc !important;
+}
+
+.dark .text-slate-700,
+.dark .text-slate-600 {
+  color: #cbd5e1 !important;
+}
+
+.dark .text-slate-500,
+.dark .text-slate-400 {
+  color: #94a3b8 !important;
 }
 
 /* Animations douces */
@@ -49,7 +94,7 @@
   background: #eef2f6;
 }
 html.dark ::-webkit-scrollbar-track {
-  background: #0f172a;
+  background: #0b0f17;
 }
 ::-webkit-scrollbar-thumb {
   background: #cbd5e1;

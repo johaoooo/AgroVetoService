@@ -38,22 +38,33 @@ export default function App() {
 
   // Système de Mode Sombre / Clair (avec persistance localStorage)
   const [darkMode, setDarkMode] = useState(() => {
-    const saved = localStorage.getItem('avs_theme');
-    if (saved) return saved === 'dark';
-    return false;
+    const saved = typeof window !== 'undefined' ? localStorage.getItem('avs_theme') : null;
+    const isDark = saved === 'dark';
+    if (typeof document !== 'undefined') {
+      if (isDark) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    }
+    return isDark;
   });
 
-  useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('avs_theme', 'dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('avs_theme', 'light');
-    }
-  }, [darkMode]);
-
-  const toggleDarkMode = () => setDarkMode(prev => !prev);
+  const toggleDarkMode = () => {
+    setDarkMode(prev => {
+      const next = !prev;
+      if (typeof document !== 'undefined') {
+        if (next) {
+          document.documentElement.classList.add('dark');
+          localStorage.setItem('avs_theme', 'dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+          localStorage.setItem('avs_theme', 'light');
+        }
+      }
+      return next;
+    });
+  };
 
   // Système de Toast Notifications
   const [toast, setToast] = useState(null);

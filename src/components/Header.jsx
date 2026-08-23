@@ -236,13 +236,21 @@ export default function Header({
               })}
             </div>
 
-            <div className="pt-3 border-t border-slate-200 dark:border-slate-800 flex flex-col gap-2">
+            <div className="pt-3 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between gap-3">
+              <button
+                type="button"
+                onClick={toggleDarkMode}
+                className="flex-1 flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl bg-slate-200/80 dark:bg-slate-800 text-slate-800 dark:text-amber-300 text-xs font-bold border border-slate-300 dark:border-slate-700 cursor-pointer"
+              >
+                {darkMode ? <Sun className="w-4 h-4 text-amber-300" /> : <Moon className="w-4 h-4 text-slate-700" />}
+                <span>{darkMode ? 'Mode Clair' : 'Mode Sombre'}</span>
+              </button>
               <Link
                 to="/devis-qhse"
-                className="w-full flex items-center justify-center gap-2 py-3 bg-emerald-700 text-white font-bold text-sm rounded-xl"
+                className="flex-1 flex items-center justify-center gap-2 py-2.5 px-3 bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs rounded-xl text-center"
               >
                 <ShieldCheck className="w-4 h-4" />
-                <span>Demander un Devis QHSE</span>
+                <span>Devis QHSE</span>
               </Link>
             </div>
           </div>
