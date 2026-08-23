@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { 
   Stethoscope, 
@@ -8,18 +8,73 @@ import {
   MapPin, 
   ArrowUpRight, 
   Clock, 
-  ChevronRight
+  ChevronRight,
+  Terminal,
+  Activity,
+  Sparkles
 } from 'lucide-react';
 import { HERO_SLIDES, COMPANY_INFO } from '../data/companyData';
 import heroAgroImg from '../assets/hero_agropastoral.jpg';
 
+const STREAM_MESSAGES = [
+  { 
+    tag: "CLINIQUE", 
+    tagColor: "text-sky-400 bg-sky-500/15 border-sky-500/30", 
+    text: "Urgences vétérinaires 24h/24, consultations et chirurgies actives au quartier Socoprise, Pointe-Noire." 
+  },
+  { 
+    tag: "PROVENDERIE", 
+    tagColor: "text-emerald-400 bg-emerald-500/15 border-emerald-500/30", 
+    text: "Arrivage permanent de poussins d'un jour Cobb 500 vaccinés et aliments provenderie haute performance." 
+  },
+  { 
+    tag: "CONSEIL QHSE", 
+    tagColor: "text-amber-400 bg-amber-500/15 border-amber-500/30", 
+    text: "Accompagnement normatif ISO 9001/14001/45001, méthode HACCP & formule « QHSE Partagé » pour les entreprises." 
+  },
+  { 
+    tag: "FERMES-ÉCOLES", 
+    tagColor: "text-emerald-400 bg-emerald-500/15 border-emerald-500/30", 
+    text: "Sessions de formation 100% pratiques en élevage avicole, gestion de cheptel et biosécurité terrain." 
+  },
+  { 
+    tag: "LABORATOIRE", 
+    tagColor: "text-sky-400 bg-sky-500/15 border-sky-500/30", 
+    text: "Analyses bromatologiques, coprologie, autopsies aviaires et diagnostic vétérinaire de précision." 
+  },
+  { 
+    tag: "SAVOIR-FAIRE", 
+    tagColor: "text-amber-400 bg-amber-500/15 border-amber-500/30", 
+    text: "Ateliers pratiques de saponification, formulation de savons durs, liquides et détergents ménagers." 
+  },
+  { 
+    tag: "DIRECTION", 
+    tagColor: "text-emerald-400 bg-emerald-500/15 border-emerald-500/30", 
+    text: "Dr POUTYA SAIZONOU : L'expertise au service de la santé animale, de la qualité agroalimentaire et du QHSE." 
+  }
+];
+
 /**
- * Composant HeroSlider — Hauteur Naturelle à Gauche et Bloc Droit Parfaitement Calibré
+ * Composant HeroSlider avec flux de texte en cours de saisie défilant vers le haut
  */
 export default function HeroSlider() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const navigate = useNavigate();
+
+  // État pour l'animation de saisie de texte (Typewriter) et défilement vertical
+  const [completedLines, setCompletedLines] = useState([
+    {
+      id: 0,
+      tag: STREAM_MESSAGES[0].tag,
+      tagColor: STREAM_MESSAGES[0].tagColor,
+      text: STREAM_MESSAGES[0].text
+    }
+  ]);
+  const [currentMsgIndex, setCurrentMsgIndex] = useState(1);
+  const [typedChars, setTypedChars] = useState('');
+  const [isTyping, setIsTyping] = useState(true);
+  const streamEndRef = useRef(null);
 
   const slideBackgrounds = [
     heroAgroImg,
@@ -27,13 +82,63 @@ export default function HeroSlider() {
     "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1920&q=80"
   ];
 
+  // Gestion du diaporama gauche
   useEffect(() => {
     if (isPaused) return;
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % HERO_SLIDES.length);
-    }, 7500);
+    }, 8500);
     return () => clearInterval(interval);
   }, [isPaused]);
+
+  // Logique d'écriture caractère par caractère et défilement vers le haut
+  useEffect(() => {
+    const targetMsg = STREAM_MESSAGES[currentMsgIndex];
+    if (!targetMsg) return;
+
+    if (isTyping) {
+      if (typedChars.length < targetMsg.text.length) {
+        const timeout = setTimeout(() => {
+          setTypedChars(targetMsg.text.slice(0, typedChars.length + 1));
+        }, 28);
+        return () => clearTimeout(timeout);
+      } else {
+        // Message complet : faire une pause avant de valider la ligne
+        const timeout = setTimeout(() => {
+          setCompletedLines((prev) => {
+            const nextLines = [
+              ...prev,
+              {
+                id: Date.now(),
+                tag: targetMsg.tag,
+                tagColor: targetMsg.tagColor,
+                text: targetMsg.text
+              }
+            ];
+            // Garder les 4 dernières lignes pour assurer un défilement fluide
+            return nextLines.slice(-4);
+          });
+          setTypedChars('');
+          setIsTyping(false);
+        }, 1600);
+        return () => clearTimeout(timeout);
+      }
+    } else {
+      // Passer au message suivant
+      const timeout = setTimeout(() => {
+        setCurrentMsgIndex((prev) => (prev + 1) % STREAM_MESSAGES.length);
+        setIsTyping(true);
+      }, 400);
+      return () => clearTimeout(timeout);
+    }
+  }, [typedChars, isTyping, currentMsgIndex]);
+
+  // Auto-scroll doux vers le bas quand une nouvelle ligne s'écrit
+  useEffect(() => {
+    if (streamEndRef.current) {
+      streamEndRef.current.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  }, [completedLines, typedChars]);
 
   const slide = HERO_SLIDES[currentSlide];
   const bgImage = slideBackgrounds[currentSlide] || heroAgroImg;
@@ -63,9 +168,11 @@ export default function HeroSlider() {
     }
   };
 
+  const currentMsgObj = STREAM_MESSAGES[currentMsgIndex];
+
   return (
     <section 
-      className="relative pt-32 pb-16 md:pt-40 md:pb-24 overflow-hidden flex items-center bg-slate-950 text-white"
+      className="relative pt-32 pb-16 md:pt-38 md:pb-22 overflow-hidden flex items-center bg-slate-950 text-white"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
@@ -76,15 +183,15 @@ export default function HeroSlider() {
           alt="AGRO VÉTO SERVICES CONGO"
           className="w-full h-full object-cover object-center transition-all duration-1000 brightness-90 contrast-105"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/65 to-slate-950/35"></div>
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/75 via-transparent to-slate-950/30"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-950/92 via-slate-950/70 to-slate-950/40"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-slate-950/30"></div>
       </div>
 
-      {/* 2. Contenu principal au format naturel */}
+      {/* 2. Contenu principal structuré */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
           
-          {/* Colonne Gauche : Hauteur naturelle initiale sans contraintes forcées */}
+          {/* Colonne Gauche : Présentation principale */}
           <div className="lg:col-span-7 space-y-6 text-left">
             
             <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-white leading-tight drop-shadow-md">
@@ -130,107 +237,112 @@ export default function HeroSlider() {
             </div>
           </div>
 
-          {/* Colonne Droite : Fiche Translucide adaptée à la hauteur du bloc gauche */}
+          {/* Colonne Droite : Terminal de Flux en Direct avec Texte Saisi & Défilement Haut */}
           <div className="lg:col-span-5">
-            <div className="rounded-2xl bg-slate-950/50 backdrop-blur-md border border-white/15 p-5 sm:p-6 shadow-2xl space-y-3.5 text-white">
+            <div className="rounded-3xl bg-slate-950/80 backdrop-blur-xl border border-white/15 p-5 sm:p-6 shadow-2xl space-y-4 text-white flex flex-col justify-between">
               
-              {/* En-tête : Titre & Localisation */}
-              <div className="border-b border-white/10 pb-2.5">
-                <h3 className="font-bold text-white text-base tracking-tight">
-                  AGRO VÉTO SERVICES CONGO
-                </h3>
-                <div className="flex items-center gap-1.5 text-xs text-emerald-300/90 font-medium mt-0.5">
-                  <MapPin className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                  <span>S.A.R.L.U. • Pointe-Noire, Congo</span>
-                </div>
-              </div>
-
-              {/* Slogan sobre et compact */}
-              <div className="py-2 px-3 rounded-xl bg-white/5 border border-white/10 text-center">
-                <p className="text-xs font-medium text-slate-200 italic">
-                  « {COMPANY_INFO.sloganShort || "De la santé animale à l'excellence QHSE"} »
-                </p>
-              </div>
-
-              {/* Les 3 Pôles Clés compacts */}
-              <div className="space-y-1.5 text-xs">
-                {/* Pôle 1 */}
-                <div 
-                  onClick={() => navigate('/clinique')}
-                  className="flex items-center justify-between p-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 transition cursor-pointer"
-                >
-                  <div className="flex items-center gap-2">
-                    <div className="w-6 h-6 rounded-md bg-sky-500/20 text-sky-300 flex items-center justify-center shrink-0">
-                      <Stethoscope className="w-3 h-3" />
-                    </div>
-                    <span className="font-medium text-slate-100 text-[12px]">Clinique & Urgences</span>
+              {/* En-tête du Terminal */}
+              <div className="flex items-center justify-between border-b border-white/10 pb-3">
+                <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-1.5">
+                    <span className="w-2.5 h-2.5 rounded-full bg-rose-500/80 inline-block"></span>
+                    <span className="w-2.5 h-2.5 rounded-full bg-amber-500/80 inline-block"></span>
+                    <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80 inline-block"></span>
                   </div>
-                  <span className="font-semibold text-sky-300 bg-sky-500/15 px-2 py-0.5 rounded-md text-[10px] flex items-center gap-1">
-                    <Clock className="w-2.5 h-2.5" />
-                    24h/24 & 7j/7
+                  <span className="text-xs font-bold text-slate-200 ml-2 tracking-wide flex items-center gap-1.5">
+                    <Terminal className="w-3.5 h-3.5 text-emerald-400" />
+                    <span>AVS CONGO • EXPERTISE EN DIRECT</span>
                   </span>
                 </div>
 
-                {/* Pôle 2 */}
-                <div 
-                  onClick={() => navigate('/boutique')}
-                  className="flex items-center justify-between p-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 transition cursor-pointer"
-                >
-                  <div className="flex items-center gap-2">
-                    <div className="w-6 h-6 rounded-md bg-emerald-500/20 text-emerald-300 flex items-center justify-center shrink-0">
-                      <Wheat className="w-3 h-3" />
-                    </div>
-                    <span className="font-medium text-slate-100 text-[12px]">Provenderie & Intrants</span>
-                  </div>
-                  <span className="font-semibold text-emerald-300 bg-emerald-500/15 px-2 py-0.5 rounded-md text-[10px]">
-                    Poussins, OAC, Aliments
-                  </span>
-                </div>
-
-                {/* Pôle 3 */}
-                <div 
-                  onClick={() => navigate('/formations')}
-                  className="flex items-center justify-between p-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 transition cursor-pointer"
-                >
-                  <div className="flex items-center gap-2">
-                    <div className="w-6 h-6 rounded-md bg-amber-500/20 text-amber-300 flex items-center justify-center shrink-0">
-                      <ShieldCheck className="w-3 h-3" />
-                    </div>
-                    <span className="font-medium text-slate-100 text-[12px]">Audits & Formations</span>
-                  </div>
-                  <span className="font-semibold text-amber-300 bg-amber-500/15 px-2 py-0.5 rounded-md text-[10px]">
-                    ISO 9001, 14001, HACCP
-                  </span>
+                <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-[10px] font-extrabold text-emerald-400">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
+                  <span>LIVE</span>
                 </div>
               </div>
 
-              {/* Bouton d'action WhatsApp */}
-              <a
-                href={`https://wa.me/${COMPANY_INFO.whatsapp}?text=Bonjour%20AGRO%20VETO%20SERVICES%2C%20je%20souhaite%20des%20renseignements.`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full flex items-center justify-center gap-2 py-2.5 px-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold transition shadow-md"
-              >
-                <MessageCircle className="w-3.5 h-3.5 fill-current" />
-                <span>Contacter l'équipe via WhatsApp</span>
-                <ChevronRight className="w-3.5 h-3.5" />
-              </a>
+              {/* Zone de texte saisie en direct et défilant vers le haut */}
+              <div className="h-[210px] overflow-y-auto space-y-3 font-mono text-xs pr-1 scrollbar-thin scrollbar-thumb-white/10 flex flex-col justify-end">
+                
+                {/* Lignes précédemment complétées qui montent */}
+                {completedLines.map((line) => (
+                  <div 
+                    key={line.id} 
+                    className="space-y-1 transition-all duration-500 opacity-70 hover:opacity-100"
+                  >
+                    <div className="flex items-center gap-2">
+                      <span className={`px-2 py-0.5 rounded-md text-[9px] font-black uppercase tracking-wider border ${line.tagColor}`}>
+                        {line.tag}
+                      </span>
+                      <span className="text-[10px] text-slate-400 font-sans">
+                        Pointe-Noire
+                      </span>
+                    </div>
+                    <p className="text-slate-200 text-xs font-sans leading-relaxed pl-1 border-l border-emerald-500/30">
+                      {line.text}
+                    </p>
+                  </div>
+                ))}
 
-              {/* Pagination discrète */}
-              <div className="pt-2 border-t border-white/10 flex items-center justify-between">
-                <span className="text-[10px] text-slate-400">Présentation</span>
-                <div className="flex items-center gap-1.5">
-                  {HERO_SLIDES.map((_, idx) => (
-                    <button
-                      key={idx}
-                      onClick={() => setCurrentSlide(idx)}
-                      className={`h-1.5 rounded-full transition-all cursor-pointer ${
-                        currentSlide === idx ? 'w-5 bg-emerald-400' : 'w-1.5 bg-white/30 hover:bg-white/50'
-                      }`}
-                      aria-label={`Diapositive ${idx + 1}`}
-                    />
-                  ))}
+                {/* Ligne actuellement en cours de frappe / saisie */}
+                {isTyping && currentMsgObj && (
+                  <div className="space-y-1 pt-1">
+                    <div className="flex items-center gap-2">
+                      <span className={`px-2 py-0.5 rounded-md text-[9px] font-black uppercase tracking-wider border ${currentMsgObj.tagColor} animate-pulse`}>
+                        {currentMsgObj.tag}
+                      </span>
+                      <span className="text-[10px] text-emerald-400 font-sans flex items-center gap-1">
+                        <Activity className="w-3 h-3 animate-spin" />
+                        <span>Transmission...</span>
+                      </span>
+                    </div>
+                    <p className="text-white font-medium text-xs font-sans leading-relaxed pl-1 border-l-2 border-emerald-400">
+                      <span>{typedChars}</span>
+                      <span className="inline-block w-1.5 h-3.5 bg-emerald-400 animate-pulse ml-1 align-middle"></span>
+                    </p>
+                  </div>
+                )}
+
+                <div ref={streamEndRef} />
+              </div>
+
+              {/* Raccourcis d'accès rapide en bas du terminal */}
+              <div className="pt-3 border-t border-white/10 space-y-2.5">
+                <div className="grid grid-cols-3 gap-2 text-[11px]">
+                  <button
+                    onClick={() => navigate('/clinique')}
+                    className="py-1.5 px-2 rounded-xl bg-white/5 hover:bg-white/15 border border-white/10 text-slate-200 hover:text-white font-semibold transition cursor-pointer text-center truncate flex items-center justify-center gap-1"
+                  >
+                    <Stethoscope className="w-3 h-3 text-sky-400 shrink-0" />
+                    <span>Clinique</span>
+                  </button>
+                  <button
+                    onClick={() => navigate('/boutique')}
+                    className="py-1.5 px-2 rounded-xl bg-white/5 hover:bg-white/15 border border-white/10 text-slate-200 hover:text-white font-semibold transition cursor-pointer text-center truncate flex items-center justify-center gap-1"
+                  >
+                    <Wheat className="w-3 h-3 text-emerald-400 shrink-0" />
+                    <span>Poussins</span>
+                  </button>
+                  <button
+                    onClick={() => navigate('/devis-qhse')}
+                    className="py-1.5 px-2 rounded-xl bg-white/5 hover:bg-white/15 border border-white/10 text-slate-200 hover:text-white font-semibold transition cursor-pointer text-center truncate flex items-center justify-center gap-1"
+                  >
+                    <ShieldCheck className="w-3 h-3 text-amber-400 shrink-0" />
+                    <span>QHSE</span>
+                  </button>
                 </div>
+
+                {/* Bouton direct WhatsApp */}
+                <a
+                  href={`https://wa.me/${COMPANY_INFO.whatsapp}?text=Bonjour%20AGRO%20VETO%20SERVICES%2C%20je%20souhaite%20des%20informations.`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full flex items-center justify-center gap-2 py-2.5 px-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold transition shadow-md cursor-pointer"
+                >
+                  <MessageCircle className="w-3.5 h-3.5 fill-current" />
+                  <span>Échanger en direct sur WhatsApp</span>
+                  <ChevronRight className="w-3.5 h-3.5" />
+                </a>
               </div>
 
             </div>
