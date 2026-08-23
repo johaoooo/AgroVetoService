@@ -11,6 +11,7 @@ const SHOWCASE_ITEMS = [
     badge: 'Permanence Continue',
     description: 'Consultations médicales, vaccinations, chirurgies et suivi zootechnique à Pointe-Noire sous la direction du Dr POUTYA SAIZONOU.',
     image: 'https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&w=1200&q=80',
+    position: 'center 25%',
     link: '/clinique',
     ctaText: 'Prendre Rendez-vous'
   },
@@ -21,6 +22,7 @@ const SHOWCASE_ITEMS = [
     badge: 'Arrivage Permanent',
     description: 'Distribution de poussins d\'un jour vaccinés, provendes de démarrage et croissance, et compléments nutritionnels homologués.',
     image: 'https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?auto=format&fit=crop&w=1200&q=80',
+    position: 'center center',
     link: '/boutique',
     ctaText: 'Commander des Intrants'
   },
@@ -31,6 +33,7 @@ const SHOWCASE_ITEMS = [
     badge: 'ISO 9001 • HACCP',
     description: 'Accompagnement à la certification, sécurité sanitaire des aliments, audits normatifs et formule sur-mesure de « QHSE Partagé ».',
     image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1200&q=80',
+    position: 'center 35%',
     link: '/devis-qhse',
     ctaText: 'Demander un Devis QHSE'
   },
@@ -40,7 +43,8 @@ const SHOWCASE_ITEMS = [
     title: 'Fermes-Écoles & Formations',
     badge: '100% Pratique Terrain',
     description: 'Sessions certifiantes en conduite d\'élevage avicole, biosécurité sanitaire et fabrication artisanale de savons et détergents.',
-    image: 'https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=1200&q=80',
+    image: 'https://images.unsplash.com/photo-1595974482597-4b8da8879bc5?auto=format&fit=crop&w=1200&q=80',
+    position: 'center 20%',
     link: '/formations',
     ctaText: 'Voir les Formations'
   }
@@ -183,7 +187,8 @@ export default function HeroSlider() {
                 <img
                   src={currentItem.image}
                   alt={currentItem.title}
-                  className="w-full h-full object-cover object-center transition-all duration-700 brightness-95 contrast-105"
+                  style={{ objectPosition: currentItem.position || 'center center' }}
+                  className="w-full h-full object-cover transition-all duration-700 brightness-95 contrast-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30 to-transparent"></div>
 
