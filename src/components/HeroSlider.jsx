@@ -14,7 +14,7 @@ import { HERO_SLIDES, COMPANY_INFO } from '../data/companyData';
 import heroAgroImg from '../assets/hero_agropastoral.jpg';
 
 /**
- * Composant HeroSlider — Design Épuré, Titres Harmonieux & Fiche Droite Pro
+ * Composant HeroSlider — Design Épuré, Sans Badges, Hauteurs Égales
  */
 export default function HeroSlider() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -65,7 +65,7 @@ export default function HeroSlider() {
 
   return (
     <section 
-      className="relative pt-32 pb-16 md:pt-36 md:pb-20 overflow-hidden min-h-[580px] flex items-center bg-slate-950"
+      className="relative pt-32 pb-16 md:pt-36 md:pb-20 overflow-hidden min-h-[560px] flex items-center bg-slate-950"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
@@ -80,49 +80,45 @@ export default function HeroSlider() {
         <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-slate-950/30"></div>
       </div>
 
-      {/* 2. Contenu au premier plan */}
+      {/* 2. Contenu au premier plan (Hauteurs identiques grâce à items-stretch) */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
           
           {/* Colonne Gauche : Titres Harmonieux & Contenu */}
-          <div className="lg:col-span-7 space-y-5 text-left">
+          <div className="lg:col-span-7 flex flex-col justify-between space-y-6 text-left">
             
-            {/* Badge de catégorie discret */}
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-xs font-semibold">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-              <span>{slide.badge}</span>
-            </div>
+            <div className="space-y-4">
+              {/* Titre calibré sans badge */}
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight">
+                {slide.title}
+              </h1>
 
-            {/* Titre calibré (longueur homogène & taille constante) */}
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight min-h-[72px] sm:min-h-[96px] flex items-center">
-              {slide.title}
-            </h1>
+              {/* Sous-titre court et percutant */}
+              <p className="text-sm sm:text-base text-slate-200 leading-relaxed max-w-xl font-normal">
+                {slide.subtitle}
+              </p>
 
-            {/* Sous-titre court et percutant */}
-            <p className="text-sm sm:text-base text-slate-200 leading-relaxed max-w-xl font-normal min-h-[48px] flex items-center">
-              {slide.subtitle}
-            </p>
+              {/* Boutons d'action */}
+              <div className="pt-2 flex flex-wrap gap-3 sm:gap-4">
+                <button
+                  onClick={() => handleAction(slide.ctaPrimary.action)}
+                  className="px-5 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm shadow-md transition cursor-pointer flex items-center gap-2"
+                >
+                  <span>{slide.ctaPrimary.text}</span>
+                  <ArrowUpRight className="w-4 h-4" />
+                </button>
 
-            {/* Boutons d'action */}
-            <div className="pt-2 flex flex-wrap gap-3 sm:gap-4">
-              <button
-                onClick={() => handleAction(slide.ctaPrimary.action)}
-                className="px-5 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm shadow-md transition cursor-pointer flex items-center gap-2"
-              >
-                <span>{slide.ctaPrimary.text}</span>
-                <ArrowUpRight className="w-4 h-4" />
-              </button>
-
-              <button
-                onClick={() => handleAction(slide.ctaSecondary.action)}
-                className="px-5 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold text-sm border border-white/20 backdrop-blur-sm transition cursor-pointer"
-              >
-                {slide.ctaSecondary.text}
-              </button>
+                <button
+                  onClick={() => handleAction(slide.ctaSecondary.action)}
+                  className="px-5 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold text-sm border border-white/20 backdrop-blur-sm transition cursor-pointer"
+                >
+                  {slide.ctaSecondary.text}
+                </button>
+              </div>
             </div>
 
             {/* Réassurance discrète en bas de colonne */}
-            <div className="pt-5 grid grid-cols-1 sm:grid-cols-3 gap-3 border-t border-white/15 text-xs text-slate-300">
+            <div className="pt-4 grid grid-cols-1 sm:grid-cols-3 gap-3 border-t border-white/15 text-xs text-slate-300">
               <div>
                 <span className="font-bold text-emerald-400 block">Direction Vétérinaire</span>
                 <span>Dr POUTYA SAIZONOU</span>
@@ -138,24 +134,19 @@ export default function HeroSlider() {
             </div>
           </div>
 
-          {/* Colonne Droite : Fiche Épurée, Structurée & Corporate */}
-          <div className="lg:col-span-5">
-            <div className="rounded-2xl bg-white text-slate-900 p-6 sm:p-7 shadow-2xl border border-slate-100 space-y-4">
+          {/* Colonne Droite : Fiche Épurée avec Même Hauteur (h-full & flex-col justify-between) */}
+          <div className="lg:col-span-5 flex">
+            <div className="w-full rounded-2xl bg-white text-slate-900 p-6 sm:p-7 shadow-2xl border border-slate-100 flex flex-col justify-between space-y-4">
               
-              {/* En-tête : Titre & Statut */}
-              <div className="flex items-start justify-between gap-2 border-b border-slate-100 pb-3">
-                <div>
-                  <h3 className="font-extrabold text-slate-900 text-base tracking-tight">
-                    AGRO VÉTO SERVICES CONGO
-                  </h3>
-                  <div className="flex items-center gap-1.5 text-xs text-slate-500 font-medium mt-0.5">
-                    <MapPin className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-                    <span>S.A.R.L.U. • Pointe-Noire, Congo</span>
-                  </div>
+              {/* En-tête : Titre & Localisation (sans badge) */}
+              <div className="border-b border-slate-100 pb-3">
+                <h3 className="font-extrabold text-slate-900 text-base tracking-tight">
+                  AGRO VÉTO SERVICES CONGO
+                </h3>
+                <div className="flex items-center gap-1.5 text-xs text-slate-500 font-medium mt-0.5">
+                  <MapPin className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                  <span>S.A.R.L.U. • Pointe-Noire, Congo</span>
                 </div>
-                <span className="text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
-                  Ouvert
-                </span>
               </div>
 
               {/* Slogan sobre encadré */}
