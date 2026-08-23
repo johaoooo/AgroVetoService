@@ -8,19 +8,23 @@ import {
   MessageCircle, 
   ShieldCheck, 
   Stethoscope, 
-  User 
+  User,
+  Sun,
+  Moon
 } from 'lucide-react';
 import { COMPANY_INFO } from '../data/companyData';
 import logoPng from '../assets/logo.png';
 
 /**
- * Composant Header Multi-Pages avec React Router (URLs Authentiques)
+ * Composant Header Multi-Pages avec Switch Mode Sombre / Mode Clair
  */
 export default function Header({ 
   cartCount, 
   setIsCartOpen, 
   currentUser, 
-  onOpenAuthModal 
+  onOpenAuthModal,
+  darkMode,
+  toggleDarkMode
 }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -100,8 +104,8 @@ export default function Header({
       {/* Barre de navigation principale */}
       <nav className={`transition-all duration-300 ${
         isScrolled 
-          ? 'bg-[#f6f8fa]/95 backdrop-blur-md shadow-sm py-2.5 border-b border-slate-200/90' 
-          : 'bg-[#f6f8fa] py-3 shadow-xs border-b border-slate-200/60'
+          ? 'bg-[#f6f8fa]/95 dark:bg-[#0b0f17]/95 backdrop-blur-md shadow-sm py-2.5 border-b border-slate-200/90 dark:border-slate-800' 
+          : 'bg-[#f6f8fa] dark:bg-[#0b0f17] py-3 shadow-xs border-b border-slate-200/60 dark:border-slate-800/80'
       }`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
           
@@ -128,8 +132,8 @@ export default function Header({
                   to={link.path}
                   className={`px-3 py-2 text-sm font-semibold rounded-lg transition-all cursor-pointer ${
                     isActive
-                      ? 'text-emerald-800 bg-emerald-100/60 font-bold'
-                      : 'text-slate-700 hover:text-emerald-800 hover:bg-slate-200/50'
+                      ? 'text-emerald-800 dark:text-emerald-300 bg-emerald-100/70 dark:bg-emerald-950/60 font-bold'
+                      : 'text-slate-700 dark:text-slate-300 hover:text-emerald-800 dark:hover:text-emerald-400 hover:bg-slate-200/60 dark:hover:bg-slate-800/60'
                   }`}
                 >
                   {link.label}
@@ -139,15 +143,29 @@ export default function Header({
           </div>
 
           {/* Boutons d'action à droite */}
-          <div className="flex items-center space-x-2.5">
+          <div className="flex items-center space-x-2 sm:space-x-2.5">
             
+            {/* Bouton Switch Mode Sombre / Mode Clair */}
+            <button
+              onClick={toggleDarkMode}
+              className="p-2 sm:p-2.5 rounded-xl bg-slate-200/70 hover:bg-slate-300/80 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-amber-300 transition-all border border-slate-300/80 dark:border-slate-700 cursor-pointer shadow-2xs"
+              title={darkMode ? "Passer en Mode Clair" : "Passer en Mode Sombre"}
+              aria-label="Changer de thème"
+            >
+              {darkMode ? (
+                <Sun className="w-4 h-4 text-amber-300" strokeWidth={2} />
+              ) : (
+                <Moon className="w-4 h-4 text-slate-700" strokeWidth={2} />
+              )}
+            </button>
+
             {/* Bouton Compte Client */}
             <button
               onClick={handleAccountClick}
               className={`flex items-center gap-1.5 p-2 sm:px-3 sm:py-2 rounded-xl text-xs font-bold transition-all border cursor-pointer ${
                 currentUser
-                  ? 'bg-emerald-100/70 border-emerald-300 text-emerald-900'
-                  : 'bg-slate-200/60 border-slate-300/80 text-slate-700 hover:bg-slate-200'
+                  ? 'bg-emerald-100/70 dark:bg-emerald-950/70 border-emerald-300 dark:border-emerald-700 text-emerald-900 dark:text-emerald-300'
+                  : 'bg-slate-200/60 dark:bg-slate-800 border-slate-300/80 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'
               }`}
               title={currentUser ? "Mon Espace Compte" : "Se connecter / Créer un compte"}
             >
@@ -160,11 +178,11 @@ export default function Header({
             {/* Panier */}
             <button
               onClick={() => setIsCartOpen(true)}
-              className="relative p-2.5 rounded-xl bg-slate-200/60 hover:bg-emerald-50 text-slate-700 hover:text-emerald-800 transition-all border border-slate-300/80 cursor-pointer"
+              className="relative p-2 sm:p-2.5 rounded-xl bg-slate-200/60 dark:bg-slate-800 hover:bg-emerald-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 hover:text-emerald-800 dark:hover:text-emerald-400 transition-all border border-slate-300/80 dark:border-slate-700 cursor-pointer"
               title="Voir mon panier"
               aria-label="Panier d'achat"
             >
-              <ShoppingCart className="w-5 h-5" strokeWidth={1.75} />
+              <ShoppingCart className="w-4 h-4 sm:w-5 sm:h-5" strokeWidth={1.75} />
               {cartCount > 0 && (
                 <span className="absolute -top-1.5 -right-1.5 bg-amber-500 text-slate-950 font-extrabold text-xs w-5 h-5 rounded-full flex items-center justify-center shadow-xs">
                   {cartCount}
@@ -188,17 +206,17 @@ export default function Header({
             {/* Menu Mobile */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden p-2.5 rounded-xl bg-slate-200/60 text-slate-700 hover:bg-slate-200 transition-colors"
+              className="lg:hidden p-2 sm:p-2.5 rounded-xl bg-slate-200/60 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors"
               aria-label="Menu"
             >
-              {isMobileMenuOpen ? <X className="w-6 h-6" strokeWidth={1.75} /> : <Menu className="w-6 h-6" strokeWidth={1.75} />}
+              {isMobileMenuOpen ? <X className="w-5 h-5" strokeWidth={1.75} /> : <Menu className="w-5 h-5" strokeWidth={1.75} />}
             </button>
           </div>
         </div>
 
         {/* Menu Déroulant Mobile avec Liens React Router */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden bg-[#f6f8fa] border-b border-slate-200 px-4 pt-3 pb-6 space-y-2 shadow-xl animate-in slide-in-from-top">
+          <div className="lg:hidden bg-[#f6f8fa] dark:bg-[#0b0f17] border-b border-slate-200 dark:border-slate-800 px-4 pt-3 pb-6 space-y-2 shadow-xl animate-in slide-in-from-top">
             <div className="grid grid-cols-1 gap-1">
               {navLinks.map((link) => {
                 const isActive = location.pathname === link.path;
@@ -208,8 +226,8 @@ export default function Header({
                     to={link.path}
                     className={`w-full px-4 py-3 text-sm font-semibold rounded-xl text-left cursor-pointer block ${
                       isActive
-                        ? 'bg-emerald-100/60 text-emerald-900 font-bold border-l-4 border-emerald-600'
-                        : 'text-slate-700 hover:bg-slate-200/50'
+                        ? 'bg-emerald-100/70 dark:bg-emerald-950/70 text-emerald-900 dark:text-emerald-300 font-bold border-l-4 border-emerald-600'
+                        : 'text-slate-700 dark:text-slate-300 hover:bg-slate-200/50 dark:hover:bg-slate-800/60'
                     }`}
                   >
                     {link.label}
@@ -218,29 +236,13 @@ export default function Header({
               })}
             </div>
 
-            <div className="pt-3 border-t border-slate-200 flex flex-col gap-2">
-              <button
-                onClick={handleAccountClick}
-                className="w-full flex items-center justify-center gap-2 bg-slate-800 text-white py-3 rounded-xl font-bold text-sm cursor-pointer"
-              >
-                <User className="w-4 h-4" strokeWidth={1.75} />
-                <span>{currentUser ? `Mon Espace (${currentUser.fullName})` : 'Créer un Compte / Se Connecter'}</span>
-              </button>
-
-              <Link
-                to="/clinique"
-                className="w-full flex items-center justify-center gap-2 bg-sky-700 text-white py-3 rounded-xl font-bold text-sm cursor-pointer text-center"
-              >
-                <Stethoscope className="w-4 h-4" strokeWidth={1.75} />
-                <span>Clinique Vétérinaire & RDV</span>
-              </Link>
-              
+            <div className="pt-3 border-t border-slate-200 dark:border-slate-800 flex flex-col gap-2">
               <Link
                 to="/devis-qhse"
-                className="w-full flex items-center justify-center gap-2 bg-emerald-700 text-white py-3 rounded-xl font-bold text-sm cursor-pointer text-center"
+                className="w-full flex items-center justify-center gap-2 py-3 bg-emerald-700 text-white font-bold text-sm rounded-xl"
               >
-                <ShieldCheck className="w-4 h-4" strokeWidth={1.75} />
-                <span>Demander un Devis QHSE / ISO</span>
+                <ShieldCheck className="w-4 h-4" />
+                <span>Demander un Devis QHSE</span>
               </Link>
             </div>
           </div>

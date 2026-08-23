@@ -36,6 +36,25 @@ export default function App() {
   });
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
 
+  // Système de Mode Sombre / Clair (avec persistance localStorage)
+  const [darkMode, setDarkMode] = useState(() => {
+    const saved = localStorage.getItem('avs_theme');
+    if (saved) return saved === 'dark';
+    return false;
+  });
+
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('avs_theme', 'dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('avs_theme', 'light');
+    }
+  }, [darkMode]);
+
+  const toggleDarkMode = () => setDarkMode(prev => !prev);
+
   // Système de Toast Notifications
   const [toast, setToast] = useState(null);
 
@@ -101,17 +120,19 @@ export default function App() {
 
   return (
     <BrowserRouter>
-      <div className="min-h-screen flex flex-col bg-[#f6f8fa] text-slate-900 selection:bg-emerald-500 selection:text-white">
+      <div className="min-h-screen flex flex-col bg-[#f6f8fa] dark:bg-[#0b0f17] text-slate-900 dark:text-slate-100 transition-colors duration-300 selection:bg-emerald-500 selection:text-white">
         
         {/* Défilement automatique vers le haut à chaque changement d'URL */}
         <ScrollToTop />
 
-        {/* 1. Header Multi-Pages avec Liens et URLs Réelles */}
+        {/* 1. Header Multi-Pages avec Switch Thème */}
         <Header
           cartCount={cartCount}
           setIsCartOpen={setIsCartOpen}
           currentUser={currentUser}
           onOpenAuthModal={() => setIsAuthModalOpen(true)}
+          darkMode={darkMode}
+          toggleDarkMode={toggleDarkMode}
         />
 
         {/* 2. Système de Routage Multi-Pages */}
