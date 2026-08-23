@@ -60,27 +60,27 @@ export const COMPANY_INFO = {
 export const HERO_SLIDES = [
   {
     id: 1,
-    badge: "Expertise Multidisciplinaire Reconnue",
-    title: "L'Excellence Vétérinaire, Agropastorale & QHSE au Congo",
-    subtitle: "Soins vétérinaires, provenderie, contrôle qualité, conseil en management QHSE et formations pratiques : nous accompagnons les éleveurs, PME et grandes entreprises vers la performance durable.",
+    badge: "Expertise Vétérinaire & QHSE",
+    title: "Santé Animale & Excellence QHSE au Congo",
+    subtitle: "Soins cliniques vétérinaires, provenderie certifiée, audits qualité et formations professionnelles à Pointe-Noire.",
     ctaPrimary: { text: "Explorer nos Services", action: "poles" },
-    ctaSecondary: { text: "Demander un Devis QHSE", action: "quote" },
+    ctaSecondary: { text: "Demander un Devis", action: "quote" },
     tag: "Pointe-Noire & Congo"
   },
   {
     id: 2,
-    badge: "Partenaire Agropastoral & Élevage",
-    title: "Votre Partenaire Global pour l'Élevage et la Réussite des PME",
-    subtitle: "Clinique vétérinaire de référence, poussins d'un jour de race sélectionnée, aliments pour bétail & volailles, et fermes-écoles immersives pour booster vos rendements.",
+    badge: "Élevage & Provenderie",
+    title: "Élevage, Provenderie & Réussite des PME",
+    subtitle: "Poussins sélectionnés, aliments pour bétail & volailles et accompagnement agropastoral pour vos rendements.",
     ctaPrimary: { text: "Commander des Intrants", action: "shop" },
-    ctaSecondary: { text: "Contacter le Dr POUTYA", action: "about" },
+    ctaSecondary: { text: "Découvrir la Ferme", action: "about" },
     tag: "Intrants & Provenderie"
   },
   {
     id: 3,
-    badge: "Sécurité Sanitaire & Normes ISO",
-    title: "De la Santé Animale à la Sécurité de Vos Produits",
-    subtitle: "Une approche scientifique intégrée combinant médecine vétérinaire, hygiène agroalimentaire (HACCP, ISO 22000) et respect des normes environnementales internationales.",
+    badge: "Audits & Sécurité Sanitaire",
+    title: "Sécurité Sanitaire, Audits & Normes ISO",
+    subtitle: "Médecine vétérinaire, hygiène agroalimentaire HACCP et mise en conformité aux standards internationaux.",
     ctaPrimary: { text: "Prendre RDV Clinique", action: "clinic" },
     ctaSecondary: { text: "Catalogue Formations", action: "training" },
     tag: "Audit & Hygiène SPS"
