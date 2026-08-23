@@ -14,7 +14,7 @@ import { HERO_SLIDES, COMPANY_INFO } from '../data/companyData';
 import heroAgroImg from '../assets/hero_agropastoral.jpg';
 
 /**
- * Composant HeroSlider — Style Aéré, Translucide & Ultra-Professionnel
+ * Composant HeroSlider — Hauteur Naturelle à Gauche et Bloc Droit Parfaitement Calibré
  */
 export default function HeroSlider() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -65,11 +65,11 @@ export default function HeroSlider() {
 
   return (
     <section 
-      className="relative pt-32 pb-16 md:pt-38 md:pb-20 overflow-hidden min-h-[580px] flex items-center bg-slate-950 text-white"
+      className="relative pt-32 pb-16 md:pt-40 md:pb-24 overflow-hidden flex items-center bg-slate-950 text-white"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
-      {/* 1. Image d'arrière-plan panoramique avec dégradé subtil et élégant */}
+      {/* 1. Image d'arrière-plan panoramique */}
       <div className="absolute inset-0 z-0">
         <img
           src={bgImage}
@@ -80,44 +80,40 @@ export default function HeroSlider() {
         <div className="absolute inset-0 bg-gradient-to-t from-slate-950/75 via-transparent to-slate-950/30"></div>
       </div>
 
-      {/* 2. Contenu principal (Colonnes de même hauteur avec items-stretch) */}
+      {/* 2. Contenu principal au format naturel */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
           
-          {/* Colonne Gauche : Titre épuré sans badge, sous-titre & boutons */}
-          <div className="lg:col-span-7 flex flex-col justify-between space-y-6 text-left py-2">
+          {/* Colonne Gauche : Hauteur naturelle initiale sans contraintes forcées */}
+          <div className="lg:col-span-7 space-y-6 text-left">
             
-            <div className="space-y-4">
-              {/* Titre harmonisé et direct (sans badge) */}
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight drop-shadow-md">
-                {slide.title}
-              </h1>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white leading-tight drop-shadow-md">
+              {slide.title}
+            </h1>
 
-              {/* Sous-titre court et limpide */}
-              <p className="text-base sm:text-lg text-slate-200 leading-relaxed max-w-xl font-normal drop-shadow-sm">
-                {slide.subtitle}
-              </p>
+            <p className="text-base sm:text-lg text-slate-200 leading-relaxed max-w-2xl font-normal drop-shadow-sm">
+              {slide.subtitle}
+            </p>
 
-              {/* Boutons d'action */}
-              <div className="pt-2 flex flex-wrap gap-3 sm:gap-4">
-                <button
-                  onClick={() => handleAction(slide.ctaPrimary.action)}
-                  className="px-6 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm sm:text-base shadow-lg shadow-emerald-950/60 transition cursor-pointer hover:scale-101 flex items-center gap-2"
-                >
-                  <span>{slide.ctaPrimary.text}</span>
-                  <ArrowUpRight className="w-4 h-4" />
-                </button>
+            {/* Boutons d'action */}
+            <div className="pt-1 flex flex-wrap gap-3 sm:gap-4">
+              <button
+                onClick={() => handleAction(slide.ctaPrimary.action)}
+                className="px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm sm:text-base shadow-lg shadow-emerald-950/60 transition cursor-pointer hover:scale-101 flex items-center gap-2"
+              >
+                <span>{slide.ctaPrimary.text}</span>
+                <ArrowUpRight className="w-4 h-4" />
+              </button>
 
-                <button
-                  onClick={() => handleAction(slide.ctaSecondary.action)}
-                  className="px-6 py-3.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold text-sm sm:text-base border border-white/20 backdrop-blur-md transition cursor-pointer"
-                >
-                  {slide.ctaSecondary.text}
-                </button>
-              </div>
+              <button
+                onClick={() => handleAction(slide.ctaSecondary.action)}
+                className="px-6 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold text-sm sm:text-base border border-white/20 backdrop-blur-md transition cursor-pointer"
+              >
+                {slide.ctaSecondary.text}
+              </button>
             </div>
 
-            {/* Réassurance discrète et aérée en bas */}
+            {/* Réassurance discrète */}
             <div className="pt-5 grid grid-cols-1 sm:grid-cols-3 gap-3 border-t border-white/15 text-xs text-slate-300">
               <div>
                 <span className="font-bold text-emerald-400 block">Direction Vétérinaire</span>
@@ -134,43 +130,43 @@ export default function HeroSlider() {
             </div>
           </div>
 
-          {/* Colonne Droite : Fiche Translucide Aérée (Même hauteur exacte, sans boîte blanche opaque) */}
-          <div className="lg:col-span-5 flex">
-            <div className="w-full rounded-2xl bg-slate-950/50 backdrop-blur-md border border-white/15 p-6 sm:p-7 shadow-2xl flex flex-col justify-between space-y-4 text-white">
+          {/* Colonne Droite : Fiche Translucide adaptée à la hauteur du bloc gauche */}
+          <div className="lg:col-span-5">
+            <div className="rounded-2xl bg-slate-950/50 backdrop-blur-md border border-white/15 p-5 sm:p-6 shadow-2xl space-y-3.5 text-white">
               
-              {/* En-tête : Titre & Localisation (sans badge superflu) */}
-              <div className="border-b border-white/10 pb-3">
-                <h3 className="font-bold text-white text-base sm:text-lg tracking-tight">
+              {/* En-tête : Titre & Localisation */}
+              <div className="border-b border-white/10 pb-2.5">
+                <h3 className="font-bold text-white text-base tracking-tight">
                   AGRO VÉTO SERVICES CONGO
                 </h3>
-                <div className="flex items-center gap-1.5 text-xs text-emerald-300/90 font-medium mt-1">
+                <div className="flex items-center gap-1.5 text-xs text-emerald-300/90 font-medium mt-0.5">
                   <MapPin className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
                   <span>S.A.R.L.U. • Pointe-Noire, Congo</span>
                 </div>
               </div>
 
-              {/* Slogan sobre et épuré */}
-              <div className="py-2.5 px-3.5 rounded-xl bg-white/5 border border-white/10 text-center">
-                <p className="text-xs sm:text-sm font-medium text-slate-200 italic">
+              {/* Slogan sobre et compact */}
+              <div className="py-2 px-3 rounded-xl bg-white/5 border border-white/10 text-center">
+                <p className="text-xs font-medium text-slate-200 italic">
                   « {COMPANY_INFO.sloganShort || "De la santé animale à l'excellence QHSE"} »
                 </p>
               </div>
 
-              {/* Les 3 Pôles Clés en design translucide */}
-              <div className="space-y-2 text-xs">
+              {/* Les 3 Pôles Clés compacts */}
+              <div className="space-y-1.5 text-xs">
                 {/* Pôle 1 */}
                 <div 
                   onClick={() => navigate('/clinique')}
-                  className="flex items-center justify-between p-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 transition cursor-pointer"
+                  className="flex items-center justify-between p-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 transition cursor-pointer"
                 >
-                  <div className="flex items-center gap-2.5">
-                    <div className="w-7 h-7 rounded-lg bg-sky-500/20 text-sky-300 flex items-center justify-center shrink-0">
-                      <Stethoscope className="w-3.5 h-3.5" />
+                  <div className="flex items-center gap-2">
+                    <div className="w-6 h-6 rounded-md bg-sky-500/20 text-sky-300 flex items-center justify-center shrink-0">
+                      <Stethoscope className="w-3 h-3" />
                     </div>
-                    <span className="font-medium text-slate-100">Clinique & Urgences</span>
+                    <span className="font-medium text-slate-100 text-[12px]">Clinique & Urgences</span>
                   </div>
-                  <span className="font-semibold text-sky-300 bg-sky-500/15 px-2 py-0.5 rounded-md text-[11px] flex items-center gap-1">
-                    <Clock className="w-3 h-3" />
+                  <span className="font-semibold text-sky-300 bg-sky-500/15 px-2 py-0.5 rounded-md text-[10px] flex items-center gap-1">
+                    <Clock className="w-2.5 h-2.5" />
                     24h/24 & 7j/7
                   </span>
                 </div>
@@ -178,15 +174,15 @@ export default function HeroSlider() {
                 {/* Pôle 2 */}
                 <div 
                   onClick={() => navigate('/boutique')}
-                  className="flex items-center justify-between p-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 transition cursor-pointer"
+                  className="flex items-center justify-between p-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 transition cursor-pointer"
                 >
-                  <div className="flex items-center gap-2.5">
-                    <div className="w-7 h-7 rounded-lg bg-emerald-500/20 text-emerald-300 flex items-center justify-center shrink-0">
-                      <Wheat className="w-3.5 h-3.5" />
+                  <div className="flex items-center gap-2">
+                    <div className="w-6 h-6 rounded-md bg-emerald-500/20 text-emerald-300 flex items-center justify-center shrink-0">
+                      <Wheat className="w-3 h-3" />
                     </div>
-                    <span className="font-medium text-slate-100">Provenderie & Intrants</span>
+                    <span className="font-medium text-slate-100 text-[12px]">Provenderie & Intrants</span>
                   </div>
-                  <span className="font-semibold text-emerald-300 bg-emerald-500/15 px-2 py-0.5 rounded-md text-[11px]">
+                  <span className="font-semibold text-emerald-300 bg-emerald-500/15 px-2 py-0.5 rounded-md text-[10px]">
                     Poussins, OAC, Aliments
                   </span>
                 </div>
@@ -194,15 +190,15 @@ export default function HeroSlider() {
                 {/* Pôle 3 */}
                 <div 
                   onClick={() => navigate('/formations')}
-                  className="flex items-center justify-between p-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 transition cursor-pointer"
+                  className="flex items-center justify-between p-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 transition cursor-pointer"
                 >
-                  <div className="flex items-center gap-2.5">
-                    <div className="w-7 h-7 rounded-lg bg-amber-500/20 text-amber-300 flex items-center justify-center shrink-0">
-                      <ShieldCheck className="w-3.5 h-3.5" />
+                  <div className="flex items-center gap-2">
+                    <div className="w-6 h-6 rounded-md bg-amber-500/20 text-amber-300 flex items-center justify-center shrink-0">
+                      <ShieldCheck className="w-3 h-3" />
                     </div>
-                    <span className="font-medium text-slate-100">Audits & Formations</span>
+                    <span className="font-medium text-slate-100 text-[12px]">Audits & Formations</span>
                   </div>
-                  <span className="font-semibold text-amber-300 bg-amber-500/15 px-2 py-0.5 rounded-md text-[11px]">
+                  <span className="font-semibold text-amber-300 bg-amber-500/15 px-2 py-0.5 rounded-md text-[10px]">
                     ISO 9001, 14001, HACCP
                   </span>
                 </div>
@@ -213,16 +209,16 @@ export default function HeroSlider() {
                 href={`https://wa.me/${COMPANY_INFO.whatsapp}?text=Bonjour%20AGRO%20VETO%20SERVICES%2C%20je%20souhaite%20des%20renseignements.`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs sm:text-sm font-bold transition shadow-md"
+                className="w-full flex items-center justify-center gap-2 py-2.5 px-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold transition shadow-md"
               >
-                <MessageCircle className="w-4 h-4 fill-current" />
+                <MessageCircle className="w-3.5 h-3.5 fill-current" />
                 <span>Contacter l'équipe via WhatsApp</span>
-                <ChevronRight className="w-4 h-4" />
+                <ChevronRight className="w-3.5 h-3.5" />
               </a>
 
               {/* Pagination discrète */}
               <div className="pt-2 border-t border-white/10 flex items-center justify-between">
-                <span className="text-[11px] text-slate-400">Présentation</span>
+                <span className="text-[10px] text-slate-400">Présentation</span>
                 <div className="flex items-center gap-1.5">
                   {HERO_SLIDES.map((_, idx) => (
                     <button
