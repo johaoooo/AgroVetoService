@@ -8,32 +8,15 @@ import {
 import founderPhoto from '../assets/dr_poutya.jpeg';
 import PageHero from '../components/PageHero';
 import { 
-  Award, 
-  ShieldCheck, 
-  Stethoscope, 
-  CheckCircle2, 
-  Building2, 
-  Target, 
-  HeartHandshake, 
-  Sparkles, 
   MessageCircle, 
-  ArrowRight, 
-  Quote, 
-  FileText, 
-  Users, 
-  Compass, 
-  GraduationCap,
-  MapPin
+  ArrowRight 
 } from 'lucide-react';
 
 /**
  * Page Dédiée : À Propos de la Fondatrice, Vision & Statuts AVS Congo
- * Design Haute Définition, Léger, Épuré et 100% Professionnel
+ * Design Épuré, Typographie Haute Lisibilité et Cadrage Mobile Optimisé
  */
 export default function AboutPage() {
-  const valueIcons = [Award, HeartHandshake, Target, Sparkles];
-  const statIcons = [Building2, Users, ShieldCheck, Stethoscope];
-
   return (
     <div className="pb-24 space-y-16 sm:space-y-20 bg-[#f6f8fa] dark:bg-[#0b0f17] transition-colors">
       
@@ -46,49 +29,44 @@ export default function AboutPage() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16 sm:space-y-20">
         
-        {/* 2. Bandeau Chiffres Clés & Impact */}
+        {/* 2. Bandeau Chiffres Clés & Impact — Style Épuré Sans Icônes */}
         <section>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-            {IMPACT_STATS.map((stat, idx) => {
-              const Icon = statIcons[idx] || ShieldCheck;
-              return (
-                <div 
-                  key={idx}
-                  className="p-5 sm:p-6 rounded-3xl bg-white dark:bg-[#121824] border border-slate-200/90 dark:border-slate-800 shadow-xs hover:border-emerald-500/50 transition-all flex flex-col justify-between"
-                >
-                  <div className="w-10 h-10 rounded-2xl bg-emerald-100/70 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400 flex items-center justify-center mb-3">
-                    <Icon className="w-5 h-5" strokeWidth={1.75} />
-                  </div>
-                  <div>
-                    <span className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white tracking-tight">
-                      {stat.value}
-                    </span>
-                    <h4 className="text-xs sm:text-sm font-bold text-slate-800 dark:text-slate-200 mt-1">
-                      {stat.label}
-                    </h4>
-                    <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">
-                      {stat.desc}
-                    </p>
-                  </div>
+            {IMPACT_STATS.map((stat, idx) => (
+              <div 
+                key={idx}
+                className="p-5 sm:p-6 rounded-3xl bg-white dark:bg-[#121824] border border-slate-200/90 dark:border-slate-800 shadow-xs hover:border-emerald-500/50 transition-all flex flex-col justify-between"
+              >
+                <div>
+                  <span className="text-2xl sm:text-3xl font-black text-emerald-600 dark:text-emerald-400 tracking-tight block">
+                    {stat.value}
+                  </span>
+                  <h4 className="text-xs sm:text-sm font-bold text-slate-800 dark:text-slate-200 mt-2">
+                    {stat.label}
+                  </h4>
+                  <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                    {stat.desc}
+                  </p>
                 </div>
-              );
-            })}
+              </div>
+            ))}
           </div>
         </section>
 
         {/* 3. Profil Détaillé de la Fondatrice & Biographie */}
         <section className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
           
-          {/* Colonne Gauche : Portrait Officiel & Fiche Exécutive */}
-          <div className="lg:col-span-5">
-            <div className="rounded-3xl bg-slate-900 text-white overflow-hidden border border-slate-800 shadow-2xl sticky top-28">
+          {/* Colonne Gauche : Portrait Officiel & Fiche Exécutive (Parfaitement cadré sur mobile) */}
+          <div className="lg:col-span-5 flex justify-center lg:block">
+            <div className="w-full max-w-md lg:max-w-none rounded-3xl bg-slate-900 text-white overflow-hidden border border-slate-800 shadow-2xl sticky top-24">
               
-              {/* Photo de portrait officielle */}
-              <div className="relative aspect-4/3 sm:aspect-square bg-slate-950 overflow-hidden">
+              {/* Photo de portrait officielle avec cadrage vertical adapté mobile & desktop */}
+              <div className="relative aspect-4/5 sm:aspect-square w-full bg-slate-950 overflow-hidden">
                 <img
                   src={FOUNDER_DATA.photo || founderPhoto}
                   alt={FOUNDER_DATA.name}
-                  className="w-full h-full object-cover object-top brightness-100 contrast-105"
+                  style={{ objectPosition: 'center 12%' }}
+                  className="w-full h-full object-cover brightness-100 contrast-105"
                 />
               </div>
 
@@ -112,8 +90,8 @@ export default function AboutPage() {
                     Titres & Domaines d'Expertise :
                   </span>
                   {FOUNDER_DATA.credentials.map((cred, index) => (
-                    <div key={index} className="text-xs text-slate-300 flex items-start gap-2.5">
-                      <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" strokeWidth={2} />
+                    <div key={index} className="text-xs text-slate-300 flex items-start gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0 mt-1.5"></span>
                       <span className="leading-snug">{cred}</span>
                     </div>
                   ))}
@@ -133,14 +111,12 @@ export default function AboutPage() {
                 </div>
 
                 {/* Coordonnées institutionnelles */}
-                <div className="pt-3 border-t border-slate-800 text-xs text-slate-400 space-y-1.5">
-                  <p className="flex items-center gap-2">
-                    <Building2 className="w-3.5 h-3.5 text-slate-500 shrink-0" />
-                    <span><strong>Société :</strong> {COMPANY_INFO.name}</span>
+                <div className="pt-3 border-t border-slate-800 text-xs text-slate-400 space-y-1">
+                  <p>
+                    <strong className="text-slate-300">Société :</strong> {COMPANY_INFO.name}
                   </p>
-                  <p className="flex items-start gap-2">
-                    <MapPin className="w-3.5 h-3.5 text-slate-500 shrink-0 mt-0.5" />
-                    <span><strong>Siège :</strong> {COMPANY_INFO.address.full}</span>
+                  <p>
+                    <strong className="text-slate-300">Siège :</strong> {COMPANY_INFO.address.full}
                   </p>
                 </div>
 
@@ -173,32 +149,23 @@ export default function AboutPage() {
               </div>
             </div>
 
-            {/* 3 Cartes de Piliers d'Action */}
+            {/* 3 Cartes de Piliers d'Action — Épurées */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
-              <div className="p-4 rounded-2xl bg-white dark:bg-[#121824] border border-slate-200/90 dark:border-slate-800 shadow-xs space-y-1.5">
-                <div className="w-8 h-8 rounded-xl bg-emerald-100/80 dark:bg-emerald-950/70 text-emerald-700 dark:text-emerald-400 flex items-center justify-center">
-                  <Stethoscope className="w-4 h-4" />
-                </div>
+              <div className="p-4 rounded-2xl bg-white dark:bg-[#121824] border-l-4 border-emerald-500 border-y border-r border-slate-200/90 dark:border-slate-800 shadow-xs space-y-1">
                 <h4 className="font-bold text-slate-900 dark:text-white text-xs">Santé Animale</h4>
                 <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed">
                   Diagnostics cliniques, prophylaxie et chirurgie vétérinaire 24/7.
                 </p>
               </div>
 
-              <div className="p-4 rounded-2xl bg-white dark:bg-[#121824] border border-slate-200/90 dark:border-slate-800 shadow-xs space-y-1.5">
-                <div className="w-8 h-8 rounded-xl bg-sky-100/80 dark:bg-sky-950/70 text-sky-700 dark:text-sky-400 flex items-center justify-center">
-                  <ShieldCheck className="w-4 h-4" />
-                </div>
+              <div className="p-4 rounded-2xl bg-white dark:bg-[#121824] border-l-4 border-sky-500 border-y border-r border-slate-200/90 dark:border-slate-800 shadow-xs space-y-1">
                 <h4 className="font-bold text-slate-900 dark:text-white text-xs">Normes QHSE</h4>
                 <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed">
                   Audits ISO 9001/14001/45001, HACCP et offre « QHSE Partagé ».
                 </p>
               </div>
 
-              <div className="p-4 rounded-2xl bg-white dark:bg-[#121824] border border-slate-200/90 dark:border-slate-800 shadow-xs space-y-1.5">
-                <div className="w-8 h-8 rounded-xl bg-indigo-100/80 dark:bg-indigo-950/70 text-indigo-700 dark:text-indigo-400 flex items-center justify-center">
-                  <GraduationCap className="w-4 h-4" />
-                </div>
+              <div className="p-4 rounded-2xl bg-white dark:bg-[#121824] border-l-4 border-amber-500 border-y border-r border-slate-200/90 dark:border-slate-800 shadow-xs space-y-1">
                 <h4 className="font-bold text-slate-900 dark:text-white text-xs">Fermes-Écoles</h4>
                 <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed">
                   Transfert de savoir-faire 100% pratique pour l'autonomie des éleveurs.
@@ -207,18 +174,16 @@ export default function AboutPage() {
             </div>
 
             {/* Mot de la Direction Stylisé */}
-            <div className="relative p-6 sm:p-8 rounded-3xl bg-emerald-950/90 text-white border border-emerald-800 shadow-xl space-y-4 overflow-hidden">
-              <Quote className="w-16 h-16 text-emerald-700/20 absolute -top-2 -right-2 pointer-events-none" />
-              
+            <div className="p-6 sm:p-8 rounded-3xl bg-emerald-950/90 text-white border border-emerald-800 shadow-xl space-y-4">
               <span className="text-xs font-bold text-amber-400 uppercase tracking-widest block">
                 Mot de la Direction Générale
               </span>
               
-              <p className="text-sm sm:text-base text-emerald-100 italic leading-relaxed relative z-10 font-normal">
-                {FOUNDER_DATA.quote}
+              <p className="text-sm sm:text-base text-emerald-100 italic leading-relaxed font-normal">
+                « {FOUNDER_DATA.quote} »
               </p>
 
-              <div className="pt-4 border-t border-emerald-800/80 flex flex-col sm:flex-row sm:items-center justify-between gap-2 relative z-10">
+              <div className="pt-4 border-t border-emerald-800/80 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                 <span className="text-xs font-extrabold text-white">
                   — {FOUNDER_DATA.name}
                 </span>
@@ -247,10 +212,7 @@ export default function AboutPage() {
             
             {/* Carte Vision */}
             <div className="lg:col-span-5 rounded-3xl bg-slate-900 text-white p-8 sm:p-10 space-y-5 shadow-xl border border-slate-800 flex flex-col justify-between">
-              <div className="space-y-4">
-                <div className="w-12 h-12 rounded-2xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center">
-                  <Compass className="w-6 h-6" strokeWidth={1.75} />
-                </div>
+              <div className="space-y-3">
                 <span className="text-xs font-bold text-amber-400 uppercase tracking-widest block">
                   Cap Stratégique 2030
                 </span>
@@ -300,7 +262,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* 5. Les 4 Valeurs Cardinales */}
+        {/* 5. Les 4 Valeurs Cardinales — Style Numéroté Épuré */}
         <section className="space-y-8">
           <div className="text-center max-w-2xl mx-auto space-y-2">
             <span className="text-xs font-bold text-emerald-700 dark:text-emerald-400 uppercase tracking-widest block">
@@ -315,33 +277,27 @@ export default function AboutPage() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {FOUNDER_DATA.values.map((val, idx) => {
-              const Icon = valueIcons[idx] || Award;
-              return (
-                <div 
-                  key={idx} 
-                  className="p-6 rounded-3xl bg-white dark:bg-[#121824] border border-slate-200/90 dark:border-slate-800 shadow-xs hover:border-emerald-500/50 hover:shadow-lg transition-all flex flex-col justify-between"
-                >
-                  <div>
-                    <div className="flex items-center justify-between mb-4">
-                      <div className="w-10 h-10 rounded-2xl bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400 flex items-center justify-center">
-                        <Icon className="w-5 h-5" strokeWidth={1.75} />
-                      </div>
-                      <span className="text-2xl font-black text-slate-200 dark:text-slate-700">
-                        0{idx + 1}
-                      </span>
-                    </div>
-
-                    <h4 className="font-extrabold text-slate-900 dark:text-white text-sm mb-2 leading-snug">
-                      {val.title}
-                    </h4>
-                    <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed font-normal">
-                      {val.desc}
-                    </p>
+            {FOUNDER_DATA.values.map((val, idx) => (
+              <div 
+                key={idx} 
+                className="p-6 rounded-3xl bg-white dark:bg-[#121824] border border-slate-200/90 dark:border-slate-800 shadow-xs hover:border-emerald-500/50 hover:shadow-lg transition-all flex flex-col justify-between"
+              >
+                <div>
+                  <div className="mb-3">
+                    <span className="text-2xl font-black text-emerald-600 dark:text-emerald-400">
+                      0{idx + 1}
+                    </span>
                   </div>
+
+                  <h4 className="font-extrabold text-slate-900 dark:text-white text-sm mb-2 leading-snug">
+                    {val.title}
+                  </h4>
+                  <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed font-normal">
+                    {val.desc}
+                  </p>
                 </div>
-              );
-            })}
+              </div>
+            ))}
           </div>
         </section>
 
@@ -349,12 +305,9 @@ export default function AboutPage() {
         <section className="p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#121824] border border-slate-200/90 dark:border-slate-800 shadow-xs">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
             <div className="space-y-2 max-w-2xl">
-              <div className="flex items-center gap-2">
-                <FileText className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
-                <h3 className="font-extrabold text-slate-900 dark:text-white text-base sm:text-lg">
-                  Cadre Juridique, Statuts & Transparence
-                </h3>
-              </div>
+              <h3 className="font-extrabold text-slate-900 dark:text-white text-base sm:text-lg">
+                Cadre Juridique, Statuts & Transparence
+              </h3>
               <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
                 <strong>AGRO VÉTO SERVICES CONGO</strong> est constituée sous la forme d'une Société à Responsabilité Limitée Unipersonnelle (S.A.R.L.U.), régie par l'Acte uniforme OHADA relatif au droit des sociétés commerciales et du GIE.
               </p>

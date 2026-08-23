@@ -40,11 +40,12 @@ export default function AboutSection() {
               <div className="relative rounded-3xl bg-slate-900 text-white overflow-hidden border border-slate-800 shadow-2xl">
                 
                 {/* Photo de la Fondatrice / Direction */}
-                <div className="relative aspect-4/3 sm:aspect-1/1 bg-slate-950 overflow-hidden">
+                <div className="relative aspect-4/5 sm:aspect-square bg-slate-950 overflow-hidden">
                   <img
                     src={FOUNDER_DATA.photo || founderPhoto}
                     alt={FOUNDER_DATA.name}
-                    className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                    style={{ objectPosition: 'center 12%' }}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
 
