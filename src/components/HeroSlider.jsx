@@ -174,45 +174,48 @@ export default function HeroSlider() {
             </div>
           </div>
 
-          {/* Colonne Droite : Showcase Interactif Haute Définition */}
-          <div className="lg:col-span-5">
-            <div className="rounded-3xl overflow-hidden bg-slate-900/90 border border-white/20 shadow-2xl transition-all">
+          {/* Colonne Droite : Showcase Interactif Compact & Haute Définition */}
+          <div className="lg:col-span-5 flex justify-center lg:justify-end">
+            <div className="w-full max-w-md rounded-2xl overflow-hidden bg-slate-900/90 border border-white/20 shadow-xl transition-all">
               
-              {/* Photo du pôle actif avec titre immersif (sans badges superposés) */}
-              <div className="relative aspect-16/10 overflow-hidden">
+              {/* Photo du pôle actif compacte et parfaitement cadrée */}
+              <div className="relative h-44 sm:h-48 w-full overflow-hidden">
                 <img
                   src={currentItem.image}
                   alt={currentItem.title}
-                  className="w-full h-full object-cover object-center transition-all duration-700 brightness-90 contrast-105"
+                  className="w-full h-full object-cover object-center transition-all duration-700 brightness-95 contrast-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30 to-transparent"></div>
 
-                {/* Titre sur l'image */}
-                <div className="absolute bottom-4 left-4 right-4">
-                  <h3 className="text-lg sm:text-xl font-extrabold text-white leading-tight drop-shadow-md">
+                {/* Titre immersif sur le bas de l'image */}
+                <div className="absolute bottom-3 left-4 right-4">
+                  <span className="text-[10px] font-extrabold tracking-widest text-emerald-300 uppercase block mb-0.5">
+                    {currentItem.category}
+                  </span>
+                  <h3 className="text-base sm:text-lg font-extrabold text-white leading-tight drop-shadow-md">
                     {currentItem.title}
                   </h3>
                 </div>
               </div>
 
-              {/* Contenu textuel sobre et action directe */}
-              <div className="p-5 sm:p-6 space-y-4 bg-slate-950/95 border-t border-white/10">
-                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
+              {/* Contenu textuel concis & navigation rapide */}
+              <div className="p-4 sm:p-5 space-y-3 bg-slate-950/95 border-t border-white/10">
+                <p className="text-xs text-slate-300 leading-relaxed font-normal">
                   {currentItem.description}
                 </p>
 
-                {/* Navigation par onglets cliquables & Barre de progression */}
-                <div className="space-y-2 pt-2 border-t border-white/10">
-                  <div className="grid grid-cols-4 gap-1.5">
+                {/* Navigation par onglets compacts & Barre de progression */}
+                <div className="space-y-1.5 pt-1.5 border-t border-white/10">
+                  <div className="grid grid-cols-4 gap-1">
                     {SHOWCASE_ITEMS.map((item, idx) => {
                       const isActive = activeShowcase === idx;
                       return (
                         <button
                           key={item.id}
                           onClick={() => setActiveShowcase(idx)}
-                          className={`py-1.5 px-1 text-[11px] font-bold rounded-lg transition-all text-center cursor-pointer truncate ${
+                          className={`py-1 px-1 text-[10px] sm:text-[11px] font-bold rounded-lg transition-all text-center cursor-pointer truncate ${
                             isActive
-                              ? 'bg-emerald-600 text-white shadow-sm'
+                              ? 'bg-emerald-600 text-white shadow-xs'
                               : 'bg-white/5 hover:bg-white/10 text-slate-400 hover:text-slate-200'
                           }`}
                         >
@@ -235,11 +238,11 @@ export default function HeroSlider() {
                   </div>
                 </div>
 
-                {/* Bouton d'action directe vers la prestation */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1">
+                {/* Boutons d'action compacts */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-0.5">
                   <button
                     onClick={() => navigate(currentItem.link)}
-                    className="w-full py-2.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold transition shadow-md cursor-pointer text-center"
+                    className="w-full py-2 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold transition shadow-sm cursor-pointer text-center"
                   >
                     {currentItem.ctaText}
                   </button>
@@ -248,9 +251,9 @@ export default function HeroSlider() {
                     href={`https://wa.me/${COMPANY_INFO.whatsapp}?text=Bonjour%20AGRO%20VETO%20SERVICES%2C%20je%20souhaite%20des%20informations%20concernant%20%3A%20${encodeURIComponent(currentItem.title)}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full py-2.5 px-4 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-white text-xs font-bold transition cursor-pointer text-center"
+                    className="w-full py-2 px-3 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-white text-xs font-bold transition cursor-pointer text-center truncate"
                   >
-                    Échanger sur WhatsApp
+                    WhatsApp
                   </a>
                 </div>
 
