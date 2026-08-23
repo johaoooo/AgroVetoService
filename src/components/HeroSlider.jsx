@@ -178,7 +178,7 @@ export default function HeroSlider() {
           <div className="lg:col-span-5">
             <div className="rounded-3xl overflow-hidden bg-slate-900/90 border border-white/20 shadow-2xl transition-all">
               
-              {/* Photo du pôle actif avec calque de texte immersif */}
+              {/* Photo du pôle actif avec titre immersif (sans badges superposés) */}
               <div className="relative aspect-16/10 overflow-hidden">
                 <img
                   src={currentItem.image}
@@ -187,18 +187,8 @@ export default function HeroSlider() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
 
-                {/* Surtitre & Badge sur l'image */}
-                <div className="absolute top-4 left-4 right-4 flex items-center justify-between">
-                  <span className="text-[10px] font-extrabold tracking-widest text-emerald-300 uppercase px-2.5 py-1 rounded-md bg-slate-950/80 backdrop-blur-md border border-emerald-500/30">
-                    {currentItem.category}
-                  </span>
-                  <span className="text-[10px] font-bold text-slate-200 px-2.5 py-1 rounded-md bg-slate-900/80 backdrop-blur-md border border-white/20">
-                    {currentItem.badge}
-                  </span>
-                </div>
-
                 {/* Titre sur l'image */}
-                <div className="absolute bottom-4 left-4 right-4 space-y-1">
+                <div className="absolute bottom-4 left-4 right-4">
                   <h3 className="text-lg sm:text-xl font-extrabold text-white leading-tight drop-shadow-md">
                     {currentItem.title}
                   </h3>
