@@ -64,43 +64,6 @@ export default function Header({
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
-      
-      {/* Barre supérieure discrète */}
-      <div className="bg-slate-950 text-slate-300 text-xs py-2 px-4 border-b border-slate-800">
-        <div className="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
-          <div className="flex items-center gap-4 flex-wrap">
-            <span className="flex items-center gap-1.5 text-slate-300">
-              <MapPin className="w-3.5 h-3.5 text-emerald-400" strokeWidth={1.75} />
-              Socoprise, Pointe-Noire (Congo)
-            </span>
-            <span className="hidden sm:inline text-slate-500">•</span>
-            <span className="hidden sm:inline text-slate-400">
-              {COMPANY_INFO.openingHours.weekdays}
-            </span>
-          </div>
-
-          <div className="flex items-center gap-4">
-            <Link 
-              to="/clinique"
-              className="flex items-center gap-1.5 text-sky-400 hover:text-sky-300 transition-colors font-semibold cursor-pointer"
-            >
-              <Stethoscope className="w-3.5 h-3.5" strokeWidth={1.75} />
-              <span>Urgences Vétérinaires 24/7</span>
-            </Link>
-            <span className="text-slate-700">•</span>
-            <a 
-              href={`https://wa.me/${COMPANY_INFO.whatsapp}?text=Bonjour%20AGRO%20VETO%20SERVICES`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1 text-emerald-400 hover:text-emerald-300 font-bold"
-            >
-              <MessageCircle className="w-3.5 h-3.5" strokeWidth={1.75} />
-              <span>WhatsApp Pro</span>
-            </a>
-          </div>
-        </div>
-      </div>
-
       {/* Barre de navigation principale */}
       <nav className={`transition-all duration-300 ${
         isScrolled 

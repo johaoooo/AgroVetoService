@@ -114,7 +114,7 @@ export default function HeroSlider() {
 
   return (
     <section 
-      className="relative pt-32 pb-16 md:pt-38 md:pb-22 overflow-hidden flex items-center bg-slate-950 text-white"
+      className="relative pt-24 pb-14 md:pt-28 md:pb-20 overflow-hidden flex items-center bg-slate-950 text-white"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >

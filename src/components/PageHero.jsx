@@ -10,7 +10,7 @@ export default function PageHero({
   children
 }) {
   return (
-    <div className="relative pt-32 pb-14 md:pt-36 md:pb-18 overflow-hidden bg-slate-950 text-white min-h-[260px] flex items-center border-b border-slate-800">
+    <div className="relative pt-24 pb-12 md:pt-28 md:pb-16 overflow-hidden bg-slate-950 text-white min-h-[240px] flex items-center border-b border-slate-800">
       {/* 1. Image d'arrière-plan haute résolution avec dégradé subtil */}
       <div className="absolute inset-0 z-0">
         <img
