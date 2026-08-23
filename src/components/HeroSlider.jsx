@@ -237,108 +237,112 @@ export default function HeroSlider() {
             </div>
           </div>
 
-          {/* Colonne Droite : Flux de Texte Épuré SANS CADRE (Frameless Live Stream) */}
-          <div className="lg:col-span-5 space-y-4">
-            
-            {/* En-tête discret sans boîte */}
-            <div className="flex items-center justify-between pb-2 border-b border-white/15">
-              <div className="flex items-center gap-2">
-                <Terminal className="w-4 h-4 text-emerald-400" />
-                <span className="text-xs font-extrabold text-white tracking-wider uppercase font-sans">
-                  AVS CONGO • FLUX EN DIRECT
-                </span>
-              </div>
-
-              <div className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/20 border border-emerald-400/40 text-[10px] font-extrabold text-emerald-300">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
-                <span>LIVE</span>
-              </div>
-            </div>
-
-            {/* Zone de texte sans cadre : flottant naturellement */}
-            <div className="h-[210px] overflow-y-auto space-y-3.5 text-xs pr-1 scrollbar-none flex flex-col justify-end">
+          {/* Colonne Droite : Capsule Translucide Haute Lisibilité */}
+          <div className="lg:col-span-5">
+            <div className="rounded-3xl bg-slate-950/65 backdrop-blur-md border border-white/20 p-5 sm:p-6 shadow-2xl space-y-4 text-white">
               
-              {/* Lignes précédemment complétées qui défilent vers le haut */}
-              {completedLines.map((line) => (
-                <div 
-                  key={line.id} 
-                  className="space-y-1 transition-all duration-500 opacity-70 hover:opacity-100"
-                >
-                  <div className="flex items-center gap-2">
-                    <span className={`px-2 py-0.5 rounded-md text-[9px] font-black uppercase tracking-wider border ${line.tagColor}`}>
-                      {line.tag}
-                    </span>
-                    <span className="text-[10px] text-slate-300 font-sans">
-                      Pointe-Noire
-                    </span>
+              {/* En-tête avec indicateur direct */}
+              <div className="flex items-center justify-between pb-3 border-b border-white/20">
+                <div className="flex items-center gap-2">
+                  <div className="w-6 h-6 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center">
+                    <Terminal className="w-3.5 h-3.5" />
                   </div>
-                  <p className="text-slate-200 text-xs sm:text-[13px] font-sans leading-relaxed pl-2 border-l-2 border-white/20">
-                    {line.text}
-                  </p>
+                  <span className="text-xs font-black text-white tracking-wider uppercase font-sans">
+                    AVS CONGO • FLUX EN DIRECT
+                  </span>
                 </div>
-              ))}
 
-              {/* Ligne actuellement en cours de saisie */}
-              {isTyping && currentMsgObj && (
-                <div className="space-y-1 pt-1">
-                  <div className="flex items-center gap-2">
-                    <span className={`px-2 py-0.5 rounded-md text-[9px] font-black uppercase tracking-wider border ${currentMsgObj.tagColor} animate-pulse`}>
-                      {currentMsgObj.tag}
-                    </span>
-                    <span className="text-[10px] text-emerald-300 font-sans font-semibold flex items-center gap-1">
-                      <Activity className="w-3 h-3 animate-spin text-emerald-400" />
-                      <span>Transmission en cours...</span>
-                    </span>
-                  </div>
-                  <p className="text-white font-medium text-xs sm:text-[13px] font-sans leading-relaxed pl-2 border-l-2 border-emerald-400">
-                    <span>{typedChars}</span>
-                    <span className="inline-block w-1.5 h-3.5 bg-emerald-400 animate-pulse ml-1 align-middle"></span>
-                  </p>
+                <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/25 border border-emerald-400/50 text-[10px] font-black text-emerald-300 shadow-sm">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                  <span>LIVE</span>
                 </div>
-              )}
-
-              <div ref={streamEndRef} />
-            </div>
-
-            {/* Raccourcis d'accès rapide discrets */}
-            <div className="pt-2 border-t border-white/15 space-y-2.5">
-              <div className="grid grid-cols-3 gap-2 text-[11px]">
-                <button
-                  onClick={() => navigate('/clinique')}
-                  className="py-2 px-2 rounded-xl bg-white/10 hover:bg-white/20 border border-white/15 text-white font-semibold transition cursor-pointer text-center truncate flex items-center justify-center gap-1.5 backdrop-blur-xs"
-                >
-                  <Stethoscope className="w-3 h-3 text-sky-300 shrink-0" />
-                  <span>Clinique</span>
-                </button>
-                <button
-                  onClick={() => navigate('/boutique')}
-                  className="py-2 px-2 rounded-xl bg-white/10 hover:bg-white/20 border border-white/15 text-white font-semibold transition cursor-pointer text-center truncate flex items-center justify-center gap-1.5 backdrop-blur-xs"
-                >
-                  <Wheat className="w-3 h-3 text-emerald-300 shrink-0" />
-                  <span>Poussins</span>
-                </button>
-                <button
-                  onClick={() => navigate('/devis-qhse')}
-                  className="py-2 px-2 rounded-xl bg-white/10 hover:bg-white/20 border border-white/15 text-white font-semibold transition cursor-pointer text-center truncate flex items-center justify-center gap-1.5 backdrop-blur-xs"
-                >
-                  <ShieldCheck className="w-3 h-3 text-amber-300 shrink-0" />
-                  <span>QHSE</span>
-                </button>
               </div>
 
-              {/* Bouton direct WhatsApp */}
-              <a
-                href={`https://wa.me/${COMPANY_INFO.whatsapp}?text=Bonjour%20AGRO%20VETO%20SERVICES%2C%20je%20souhaite%20des%20informations.`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full flex items-center justify-center gap-2 py-2.5 px-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold transition shadow-md cursor-pointer"
-              >
-                <MessageCircle className="w-3.5 h-3.5 fill-current" />
-                <span>Échanger en direct sur WhatsApp</span>
-                <ChevronRight className="w-3.5 h-3.5" />
-              </a>
-            </div>
+              {/* Zone de texte avec contraste renforcé */}
+              <div className="h-[215px] overflow-y-auto space-y-3.5 text-xs pr-1 scrollbar-none flex flex-col justify-end">
+                
+                {/* Lignes précédemment complétées qui défilent vers le haut */}
+                {completedLines.map((line) => (
+                  <div 
+                    key={line.id} 
+                    className="space-y-1 transition-all duration-500 opacity-85 hover:opacity-100"
+                  >
+                    <div className="flex items-center gap-2">
+                      <span className={`px-2 py-0.5 rounded-md text-[9px] font-black uppercase tracking-wider border shadow-xs ${line.tagColor}`}>
+                        {line.tag}
+                      </span>
+                      <span className="text-[11px] text-slate-300 font-sans font-medium">
+                        Pointe-Noire
+                      </span>
+                    </div>
+                    <p className="text-slate-100 text-xs sm:text-[13px] font-sans font-normal leading-relaxed pl-2.5 border-l-2 border-white/30 drop-shadow-xs">
+                      {line.text}
+                    </p>
+                  </div>
+                ))}
 
+                {/* Ligne actuellement en cours de saisie */}
+                {isTyping && currentMsgObj && (
+                  <div className="space-y-1 pt-1">
+                    <div className="flex items-center gap-2">
+                      <span className={`px-2 py-0.5 rounded-md text-[9px] font-black uppercase tracking-wider border shadow-xs ${currentMsgObj.tagColor} animate-pulse`}>
+                        {currentMsgObj.tag}
+                      </span>
+                      <span className="text-[11px] text-emerald-300 font-sans font-bold flex items-center gap-1">
+                        <Activity className="w-3.5 h-3.5 animate-spin text-emerald-400" />
+                        <span>Transmission en direct...</span>
+                      </span>
+                    </div>
+                    <p className="text-white font-bold text-xs sm:text-[13px] font-sans leading-relaxed pl-2.5 border-l-2 border-emerald-400 drop-shadow-sm">
+                      <span>{typedChars}</span>
+                      <span className="inline-block w-1.5 h-4 bg-emerald-400 animate-pulse ml-1 align-middle"></span>
+                    </p>
+                  </div>
+                )}
+
+                <div ref={streamEndRef} />
+              </div>
+
+              {/* Raccourcis d'accès rapide discrets */}
+              <div className="pt-3 border-t border-white/20 space-y-2.5">
+                <div className="grid grid-cols-3 gap-2 text-[11px]">
+                  <button
+                    onClick={() => navigate('/clinique')}
+                    className="py-2 px-2 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold transition cursor-pointer text-center truncate flex items-center justify-center gap-1.5 shadow-xs"
+                  >
+                    <Stethoscope className="w-3 h-3 text-sky-300 shrink-0" />
+                    <span>Clinique</span>
+                  </button>
+                  <button
+                    onClick={() => navigate('/boutique')}
+                    className="py-2 px-2 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold transition cursor-pointer text-center truncate flex items-center justify-center gap-1.5 shadow-xs"
+                  >
+                    <Wheat className="w-3 h-3 text-emerald-300 shrink-0" />
+                    <span>Poussins</span>
+                  </button>
+                  <button
+                    onClick={() => navigate('/devis-qhse')}
+                    className="py-2 px-2 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold transition cursor-pointer text-center truncate flex items-center justify-center gap-1.5 shadow-xs"
+                  >
+                    <ShieldCheck className="w-3 h-3 text-amber-300 shrink-0" />
+                    <span>QHSE</span>
+                  </button>
+                </div>
+
+                {/* Bouton direct WhatsApp */}
+                <a
+                  href={`https://wa.me/${COMPANY_INFO.whatsapp}?text=Bonjour%20AGRO%20VETO%20SERVICES%2C%20je%20souhaite%20des%20informations.`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full flex items-center justify-center gap-2 py-2.5 px-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold transition shadow-md cursor-pointer"
+                >
+                  <MessageCircle className="w-3.5 h-3.5 fill-current" />
+                  <span>Échanger en direct sur WhatsApp</span>
+                  <ChevronRight className="w-3.5 h-3.5" />
+                </a>
+              </div>
+
+            </div>
           </div>
 
         </div>
