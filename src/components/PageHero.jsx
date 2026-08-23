@@ -27,7 +27,7 @@ export default function PageHero({
         <div className="max-w-3xl space-y-3">
           
           {/* Titre principal */}
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight leading-tight drop-shadow-md">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white tracking-tight leading-tight drop-shadow-md">
             {title}
           </h1>
 

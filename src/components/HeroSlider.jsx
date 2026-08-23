@@ -87,7 +87,7 @@ export default function HeroSlider() {
           {/* Colonne Gauche : Hauteur naturelle initiale sans contraintes forcées */}
           <div className="lg:col-span-7 space-y-6 text-left">
             
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white leading-tight drop-shadow-md">
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-white leading-tight drop-shadow-md">
               {slide.title}
             </h1>
 

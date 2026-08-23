@@ -90,18 +90,6 @@ export default function AboutPage() {
                   alt={FOUNDER_DATA.name}
                   className="w-full h-full object-cover object-top brightness-100 contrast-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
-                
-                {/* Badge médical sur la photo */}
-                <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
-                  <span className="px-3 py-1 rounded-full bg-slate-900/80 backdrop-blur-md text-emerald-400 text-xs font-bold border border-emerald-500/30 flex items-center gap-1.5 shadow-lg">
-                    <Stethoscope className="w-3.5 h-3.5" />
-                    <span>Direction Générale</span>
-                  </span>
-                  <span className="px-2.5 py-1 rounded-full bg-amber-500/90 text-slate-950 text-xs font-black shadow-md">
-                    Pointe-Noire
-                  </span>
-                </div>
               </div>
 
               {/* Détails & Qualifications */}
