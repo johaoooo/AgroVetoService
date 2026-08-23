@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-agro: #197d16;
+    --color-agro-dark: #125e10;
+    --color-veto: #0547c3;
+    --color-veto-dark: #03328c;
+    --color-gold: #f8ab09;
+    --color-gold-dark: #d97706;
+    --bg-soft: #f6f8fa;
+    --card-soft: #fcfdfe;
+  }
+
+  html {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    background-color: #f6f8fa;
+    color: #1e293b;
+  }
+
+  body {
+    background-color: #f6f8fa;
+    color: #1e293b;
+  }
+}
+
+/* Animations douces */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Barre de défilement adoucie */
+::-webkit-scrollbar {
+  width: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #eef2f6;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
