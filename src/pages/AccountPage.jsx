@@ -19,11 +19,11 @@ export default function AccountPage({ currentUser, onLogout, onOpenAuthModal }) 
   if (!currentUser) {
     return (
       <div className="pt-36 pb-24 max-w-lg mx-auto px-4 text-center space-y-4">
-        <div className="w-16 h-16 bg-slate-200 rounded-full flex items-center justify-center mx-auto text-slate-500">
+        <div className="w-16 h-16 bg-slate-200 dark:bg-slate-800 rounded-full flex items-center justify-center mx-auto text-slate-500 dark:text-slate-400">
           <User className="w-8 h-8" strokeWidth={1.5} />
         </div>
-        <h2 className="text-2xl font-extrabold text-slate-900">Espace Compte Non Connecté</h2>
-        <p className="text-xs sm:text-sm text-slate-600">
+        <h2 className="text-2xl font-extrabold text-slate-900 dark:text-white">Espace Compte Non Connecté</h2>
+        <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400">
           Veuillez vous connecter ou créer un compte pour accéder à votre tableau de bord et vos commandes.
         </p>
         <div className="pt-2 flex justify-center gap-3">
@@ -35,7 +35,7 @@ export default function AccountPage({ currentUser, onLogout, onOpenAuthModal }) 
           </button>
           <Link
             to="/"
-            className="px-6 py-3 bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold text-xs rounded-xl cursor-pointer"
+            className="px-6 py-3 bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 font-bold text-xs rounded-xl cursor-pointer"
           >
             Retour à l'accueil
           </Link>
@@ -47,7 +47,7 @@ export default function AccountPage({ currentUser, onLogout, onOpenAuthModal }) 
   const isCompany = currentUser.userType === 'company';
 
   return (
-    <div className="pb-20 space-y-12 bg-[#f6f8fa]">
+    <div className="pb-20 space-y-12 bg-[#f6f8fa] dark:bg-[#0b0f17] transition-colors">
       
       {/* En-tête du Tableau de Bord avec arrière-plan photo */}
       <div className="relative pt-32 pb-14 bg-slate-950 text-white overflow-hidden border-b border-slate-800">
@@ -98,13 +98,13 @@ export default function AccountPage({ currentUser, onLogout, onOpenAuthModal }) 
           
           {/* Colonne Gauche : Navigation */}
           <div className="lg:col-span-4 space-y-6">
-            <div className="rounded-3xl bg-[#fafbfc] border border-slate-200/90 p-5 shadow-xs space-y-2">
+            <div className="rounded-3xl bg-[#fafbfc] dark:bg-[#121824] border border-slate-200/90 dark:border-slate-800 p-5 shadow-xs space-y-2">
               <button
                 onClick={() => setActiveTab('orders')}
                 className={`w-full flex items-center gap-3 px-4 py-3 rounded-2xl text-xs font-bold transition-all cursor-pointer ${
                   activeTab === 'orders'
                     ? 'bg-emerald-700 text-white shadow-xs'
-                    : 'text-slate-700 hover:bg-slate-200/60'
+                    : 'text-slate-700 dark:text-slate-300 hover:bg-slate-200/60 dark:hover:bg-slate-800'
                 }`}
               >
                 <ShoppingBag className="w-4 h-4" strokeWidth={1.75} />
@@ -116,7 +116,7 @@ export default function AccountPage({ currentUser, onLogout, onOpenAuthModal }) 
                 className={`w-full flex items-center gap-3 px-4 py-3 rounded-2xl text-xs font-bold transition-all cursor-pointer ${
                   activeTab === 'appointments'
                     ? 'bg-emerald-700 text-white shadow-xs'
-                    : 'text-slate-700 hover:bg-slate-200/60'
+                    : 'text-slate-700 dark:text-slate-300 hover:bg-slate-200/60 dark:hover:bg-slate-800'
                 }`}
               >
                 <Stethoscope className="w-4 h-4" strokeWidth={1.75} />
@@ -128,7 +128,7 @@ export default function AccountPage({ currentUser, onLogout, onOpenAuthModal }) 
                 className={`w-full flex items-center gap-3 px-4 py-3 rounded-2xl text-xs font-bold transition-all cursor-pointer ${
                   activeTab === 'trainings'
                     ? 'bg-emerald-700 text-white shadow-xs'
-                    : 'text-slate-700 hover:bg-slate-200/60'
+                    : 'text-slate-700 dark:text-slate-300 hover:bg-slate-200/60 dark:hover:bg-slate-800'
                 }`}
               >
                 <GraduationCap className="w-4 h-4" strokeWidth={1.75} />
@@ -140,7 +140,7 @@ export default function AccountPage({ currentUser, onLogout, onOpenAuthModal }) 
                 className={`w-full flex items-center gap-3 px-4 py-3 rounded-2xl text-xs font-bold transition-all cursor-pointer ${
                   activeTab === 'profile'
                     ? 'bg-emerald-700 text-white shadow-xs'
-                    : 'text-slate-700 hover:bg-slate-200/60'
+                    : 'text-slate-700 dark:text-slate-300 hover:bg-slate-200/60 dark:hover:bg-slate-800'
                 }`}
               >
                 <User className="w-4 h-4" strokeWidth={1.75} />
@@ -169,33 +169,33 @@ export default function AccountPage({ currentUser, onLogout, onOpenAuthModal }) 
 
           {/* Colonne Droite : Contenu de l'Onglet */}
           <div className="lg:col-span-8">
-            <div className="rounded-3xl bg-[#fafbfc] border border-slate-200/90 p-6 sm:p-8 shadow-xs min-h-[400px]">
+            <div className="rounded-3xl bg-[#fafbfc] dark:bg-[#121824] border border-slate-200/90 dark:border-slate-800 p-6 sm:p-8 shadow-xs min-h-[400px]">
               
               {/* Onglet 1 : Commandes */}
               {activeTab === 'orders' && (
                 <div className="space-y-6">
-                  <div className="flex items-center justify-between border-b border-slate-200 pb-4">
+                  <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-4">
                     <div>
-                      <h3 className="text-lg font-extrabold text-slate-900">Historique des Commandes</h3>
-                      <p className="text-xs text-slate-500">Retrouvez le suivi de vos approvisionnements et livraisons.</p>
+                      <h3 className="text-lg font-extrabold text-slate-900 dark:text-white">Historique des Commandes</h3>
+                      <p className="text-xs text-slate-500 dark:text-slate-400">Retrouvez le suivi de vos approvisionnements et livraisons.</p>
                     </div>
                     <Link
                       to="/boutique"
-                      className="px-4 py-2 rounded-xl bg-slate-900 text-white text-xs font-bold hover:bg-slate-800 transition-colors cursor-pointer"
+                      className="px-4 py-2 rounded-xl bg-slate-900 dark:bg-emerald-600 text-white text-xs font-bold hover:bg-slate-800 dark:hover:bg-emerald-500 transition-colors cursor-pointer"
                     >
                       Commander en boutique
                     </Link>
                   </div>
 
-                  <div className="p-6 rounded-2xl bg-[#f1f5f8] border border-slate-200 text-center space-y-3">
-                    <ShoppingBag className="w-8 h-8 text-slate-400 mx-auto" strokeWidth={1.5} />
+                  <div className="p-6 rounded-2xl bg-[#f1f5f8] dark:bg-[#192233] border border-slate-200 dark:border-slate-800 text-center space-y-3">
+                    <ShoppingBag className="w-8 h-8 text-slate-400 dark:text-slate-500 mx-auto" strokeWidth={1.5} />
                     <div>
-                      <p className="text-sm font-bold text-slate-800">Aucune commande en attente</p>
-                      <p className="text-xs text-slate-500 mt-0.5">Vos prochaines commandes validées sur WhatsApp apparaîtront ici.</p>
+                      <p className="text-sm font-bold text-slate-800 dark:text-slate-200">Aucune commande en attente</p>
+                      <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Vos prochaines commandes validées sur WhatsApp apparaîtront ici.</p>
                     </div>
                     <Link
                       to="/boutique"
-                      className="inline-block text-xs font-bold text-emerald-800 hover:underline cursor-pointer"
+                      className="inline-block text-xs font-bold text-emerald-800 dark:text-emerald-400 hover:underline cursor-pointer"
                     >
                       Commander des poussins ou aliments de provenderie →
                     </Link>
@@ -206,10 +206,10 @@ export default function AccountPage({ currentUser, onLogout, onOpenAuthModal }) 
               {/* Onglet 2 : Rendez-vous Clinique */}
               {activeTab === 'appointments' && (
                 <div className="space-y-6">
-                  <div className="flex items-center justify-between border-b border-slate-200 pb-4">
+                  <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-4">
                     <div>
-                      <h3 className="text-lg font-extrabold text-slate-900">Suivi Vétérinaire & RDV</h3>
-                      <p className="text-xs text-slate-500">Consultations, calendrier vaccinal et visites de cheptel.</p>
+                      <h3 className="text-lg font-extrabold text-slate-900 dark:text-white">Suivi Vétérinaire & RDV</h3>
+                      <p className="text-xs text-slate-500 dark:text-slate-400">Consultations, calendrier vaccinal et visites de cheptel.</p>
                     </div>
                     <Link
                       to="/clinique"
@@ -219,15 +219,15 @@ export default function AccountPage({ currentUser, onLogout, onOpenAuthModal }) 
                     </Link>
                   </div>
 
-                  <div className="p-6 rounded-2xl bg-[#f1f5f8] border border-slate-200 text-center space-y-3">
-                    <Stethoscope className="w-8 h-8 text-slate-400 mx-auto" strokeWidth={1.5} />
+                  <div className="p-6 rounded-2xl bg-[#f1f5f8] dark:bg-[#192233] border border-slate-200 dark:border-slate-800 text-center space-y-3">
+                    <Stethoscope className="w-8 h-8 text-slate-400 dark:text-slate-500 mx-auto" strokeWidth={1.5} />
                     <div>
-                      <p className="text-sm font-bold text-slate-800">Aucun rendez-vous planifié</p>
-                      <p className="text-xs text-slate-500 mt-0.5">Prenez rendez-vous à la clinique Socoprise ou sur exploitation.</p>
+                      <p className="text-sm font-bold text-slate-800 dark:text-slate-200">Aucun rendez-vous planifié</p>
+                      <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Prenez rendez-vous à la clinique Socoprise ou sur exploitation.</p>
                     </div>
                     <Link
                       to="/clinique"
-                      className="inline-block text-xs font-bold text-sky-800 hover:underline cursor-pointer"
+                      className="inline-block text-xs font-bold text-sky-800 dark:text-sky-400 hover:underline cursor-pointer"
                     >
                       Planifier une consultation vétérinaire →
                     </Link>
@@ -238,10 +238,10 @@ export default function AccountPage({ currentUser, onLogout, onOpenAuthModal }) 
               {/* Onglet 3 : Formations */}
               {activeTab === 'trainings' && (
                 <div className="space-y-6">
-                  <div className="flex items-center justify-between border-b border-slate-200 pb-4">
+                  <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-4">
                     <div>
-                      <h3 className="text-lg font-extrabold text-slate-900">Formations & Fermes-Écoles</h3>
-                      <p className="text-xs text-slate-500">Sessions pratiques certifiantes et attestations officielles.</p>
+                      <h3 className="text-lg font-extrabold text-slate-900 dark:text-white">Formations & Fermes-Écoles</h3>
+                      <p className="text-xs text-slate-500 dark:text-slate-400">Sessions pratiques certifiantes et attestations officielles.</p>
                     </div>
                     <Link
                       to="/formations"
@@ -251,15 +251,15 @@ export default function AccountPage({ currentUser, onLogout, onOpenAuthModal }) 
                     </Link>
                   </div>
 
-                  <div className="p-6 rounded-2xl bg-[#f1f5f8] border border-slate-200 text-center space-y-3">
-                    <GraduationCap className="w-8 h-8 text-slate-400 mx-auto" strokeWidth={1.5} />
+                  <div className="p-6 rounded-2xl bg-[#f1f5f8] dark:bg-[#192233] border border-slate-200 dark:border-slate-800 text-center space-y-3">
+                    <GraduationCap className="w-8 h-8 text-slate-400 dark:text-slate-500 mx-auto" strokeWidth={1.5} />
                     <div>
-                      <p className="text-sm font-bold text-slate-800">Aucune formation en cours</p>
-                      <p className="text-xs text-slate-500 mt-0.5">Consultez le calendrier des prochaines sessions certifiantes.</p>
+                      <p className="text-sm font-bold text-slate-800 dark:text-slate-200">Aucune formation en cours</p>
+                      <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Consultez le calendrier des prochaines sessions certifiantes.</p>
                     </div>
                     <Link
                       to="/formations"
-                      className="inline-block text-xs font-bold text-indigo-800 hover:underline cursor-pointer"
+                      className="inline-block text-xs font-bold text-indigo-800 dark:text-indigo-400 hover:underline cursor-pointer"
                     >
                       Découvrir le catalogue des formations →
                     </Link>
@@ -270,49 +270,49 @@ export default function AccountPage({ currentUser, onLogout, onOpenAuthModal }) 
               {/* Onglet 4 : Informations du Profil */}
               {activeTab === 'profile' && (
                 <div className="space-y-6">
-                  <div className="border-b border-slate-200 pb-4">
-                    <h3 className="text-lg font-extrabold text-slate-900">Coordonnées du Compte</h3>
-                    <p className="text-xs text-slate-500">Vos coordonnées utilisées pour la livraison et la facturation.</p>
+                  <div className="border-b border-slate-200 dark:border-slate-800 pb-4">
+                    <h3 className="text-lg font-extrabold text-slate-900 dark:text-white">Coordonnées du Compte</h3>
+                    <p className="text-xs text-slate-500 dark:text-slate-400">Vos coordonnées utilisées pour la livraison et la facturation.</p>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs sm:text-sm">
-                    <div className="p-4 rounded-2xl bg-[#f1f5f8] border border-slate-200 space-y-1">
-                      <span className="text-xs text-slate-500 font-semibold block">Nom Complet</span>
-                      <span className="font-bold text-slate-900">{currentUser.fullName}</span>
+                    <div className="p-4 rounded-2xl bg-[#f1f5f8] dark:bg-[#192233] border border-slate-200 dark:border-slate-800 space-y-1">
+                      <span className="text-xs text-slate-500 dark:text-slate-400 font-semibold block">Nom Complet</span>
+                      <span className="font-bold text-slate-900 dark:text-white">{currentUser.fullName}</span>
                     </div>
 
                     {currentUser.companyName && (
-                      <div className="p-4 rounded-2xl bg-[#f1f5f8] border border-slate-200 space-y-1">
-                        <span className="text-xs text-slate-500 font-semibold block">Nom de l'Entreprise</span>
-                        <span className="font-bold text-slate-900">{currentUser.companyName}</span>
+                      <div className="p-4 rounded-2xl bg-[#f1f5f8] dark:bg-[#192233] border border-slate-200 dark:border-slate-800 space-y-1">
+                        <span className="text-xs text-slate-500 dark:text-slate-400 font-semibold block">Nom de l'Entreprise</span>
+                        <span className="font-bold text-slate-900 dark:text-white">{currentUser.companyName}</span>
                       </div>
                     )}
 
-                    <div className="p-4 rounded-2xl bg-[#f1f5f8] border border-slate-200 space-y-1">
-                      <span className="text-xs text-slate-500 font-semibold block">Téléphone / WhatsApp</span>
-                      <span className="font-bold text-slate-900">{currentUser.phone}</span>
+                    <div className="p-4 rounded-2xl bg-[#f1f5f8] dark:bg-[#192233] border border-slate-200 dark:border-slate-800 space-y-1">
+                      <span className="text-xs text-slate-500 dark:text-slate-400 font-semibold block">Téléphone / WhatsApp</span>
+                      <span className="font-bold text-slate-900 dark:text-white">{currentUser.phone}</span>
                     </div>
 
-                    <div className="p-4 rounded-2xl bg-[#f1f5f8] border border-slate-200 space-y-1">
-                      <span className="text-xs text-slate-500 font-semibold block">Adresse Email</span>
-                      <span className="font-bold text-slate-900">{currentUser.email || 'Non renseignée'}</span>
+                    <div className="p-4 rounded-2xl bg-[#f1f5f8] dark:bg-[#192233] border border-slate-200 dark:border-slate-800 space-y-1">
+                      <span className="text-xs text-slate-500 dark:text-slate-400 font-semibold block">Adresse Email</span>
+                      <span className="font-bold text-slate-900 dark:text-white">{currentUser.email || 'Non renseignée'}</span>
                     </div>
 
-                    <div className="p-4 rounded-2xl bg-[#f1f5f8] border border-slate-200 space-y-1">
-                      <span className="text-xs text-slate-500 font-semibold block">Ville / Localisation</span>
-                      <span className="font-bold text-slate-900">{currentUser.city || 'Pointe-Noire'}</span>
+                    <div className="p-4 rounded-2xl bg-[#f1f5f8] dark:bg-[#192233] border border-slate-200 dark:border-slate-800 space-y-1">
+                      <span className="text-xs text-slate-500 dark:text-slate-400 font-semibold block">Ville / Localisation</span>
+                      <span className="font-bold text-slate-900 dark:text-white">{currentUser.city || 'Pointe-Noire'}</span>
                     </div>
 
-                    <div className="p-4 rounded-2xl bg-[#f1f5f8] border border-slate-200 space-y-1">
-                      <span className="text-xs text-slate-500 font-semibold block">Type de Compte</span>
-                      <span className="font-bold text-emerald-800">
+                    <div className="p-4 rounded-2xl bg-[#f1f5f8] dark:bg-[#192233] border border-slate-200 dark:border-slate-800 space-y-1">
+                      <span className="text-xs text-slate-500 dark:text-slate-400 font-semibold block">Type de Compte</span>
+                      <span className="font-bold text-emerald-800 dark:text-emerald-400">
                         {isCompany ? 'Entreprise / PME (B2B)' : 'Éleveur / Particulier'}
                       </span>
                     </div>
                   </div>
 
                   <div className="pt-2">
-                    <p className="text-xs text-slate-500">
+                    <p className="text-xs text-slate-500 dark:text-slate-400">
                       Pour modifier vos informations officielles ou transférer votre compte, contactez la direction AVS Congo.
                     </p>
                   </div>

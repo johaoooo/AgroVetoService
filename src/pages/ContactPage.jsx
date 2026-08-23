@@ -8,7 +8,7 @@ import PageHero from '../components/PageHero';
  */
 export default function ContactPage({ showToast }) {
   return (
-    <div className="pb-16 space-y-12 bg-[#f6f8fa]">
+    <div className="pb-16 space-y-12 bg-[#f6f8fa] dark:bg-[#0b0f17] transition-colors">
       
       {/* Hero avec photographie haute résolution */}
       <PageHero

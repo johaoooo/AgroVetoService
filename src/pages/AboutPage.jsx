@@ -10,7 +10,7 @@ import PageHero from '../components/PageHero';
  */
 export default function AboutPage() {
   return (
-    <div className="pb-20 space-y-16 bg-[#f6f8fa]">
+    <div className="pb-20 space-y-16 bg-[#f6f8fa] dark:bg-[#0b0f17] transition-colors">
       
       {/* Hero avec photographie haute résolution */}
       <PageHero
@@ -71,10 +71,10 @@ export default function AboutPage() {
           {/* Colonne Droite : Biographie Détaillée */}
           <div className="lg:col-span-7 space-y-8">
             <div className="space-y-4">
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900">
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">
                 Biographie Professionnelle
               </h2>
-              <div className="text-slate-600 text-sm sm:text-base leading-relaxed space-y-4 font-normal">
+              <div className="text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed space-y-4 font-normal">
                 {FOUNDER_DATA.bio.split('\n\n').map((p, idx) => (
                   <p key={idx}>{p}</p>
                 ))}
@@ -82,26 +82,26 @@ export default function AboutPage() {
             </div>
 
             {/* Mot de la Direction */}
-            <div className="p-6 sm:p-8 rounded-3xl bg-[#fafbfc] border border-slate-200/90 shadow-xs space-y-4">
-              <span className="text-xs font-bold text-emerald-800 uppercase tracking-wider block">
+            <div className="p-6 sm:p-8 rounded-3xl bg-[#fafbfc] dark:bg-[#121824] border border-slate-200/90 dark:border-slate-800 shadow-xs space-y-4">
+              <span className="text-xs font-bold text-emerald-800 dark:text-emerald-400 uppercase tracking-wider block">
                 Mot de la Direction
               </span>
-              <p className="text-sm text-slate-700 italic leading-relaxed">
+              <p className="text-sm text-slate-700 dark:text-slate-300 italic leading-relaxed">
                 {FOUNDER_DATA.quote}
               </p>
-              <div className="pt-3 border-t border-slate-200 flex items-center justify-between">
-                <span className="text-xs font-extrabold text-slate-900">
+              <div className="pt-3 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between">
+                <span className="text-xs font-extrabold text-slate-900 dark:text-white">
                   — {FOUNDER_DATA.name}
                 </span>
-                <span className="text-[11px] font-semibold text-emerald-700">
+                <span className="text-[11px] font-semibold text-emerald-700 dark:text-emerald-400">
                   Médecin Vétérinaire & Spécialiste QHSE
                 </span>
               </div>
             </div>
 
             {/* Statuts & Forme Juridique */}
-            <div className="p-6 rounded-3xl bg-[#fafbfc] border border-slate-200/90 shadow-xs space-y-3 text-xs sm:text-sm text-slate-600">
-              <h3 className="font-bold text-slate-900 text-base">
+            <div className="p-6 rounded-3xl bg-[#fafbfc] dark:bg-[#121824] border border-slate-200/90 dark:border-slate-800 shadow-xs space-y-3 text-xs sm:text-sm text-slate-600 dark:text-slate-300">
+              <h3 className="font-bold text-slate-900 dark:text-white text-base">
                 Cadre Juridique & Statuts
               </h3>
               <p>
@@ -125,13 +125,13 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <div className="rounded-3xl bg-emerald-50/70 border border-emerald-200 p-8 space-y-4 shadow-xs">
-            <span className="text-xs font-bold text-emerald-900 uppercase tracking-widest block">Engagements Métier</span>
-            <h3 className="text-xl font-extrabold text-emerald-950">NOS MISSIONS</h3>
+          <div className="rounded-3xl bg-emerald-50/70 dark:bg-[#121824] border border-emerald-200 dark:border-slate-800 p-8 space-y-4 shadow-xs">
+            <span className="text-xs font-bold text-emerald-900 dark:text-emerald-400 uppercase tracking-widest block">Engagements Métier</span>
+            <h3 className="text-xl font-extrabold text-emerald-950 dark:text-emerald-300">NOS MISSIONS</h3>
             <ul className="space-y-2">
               {FOUNDER_DATA.missions.map((mission, i) => (
-                <li key={i} className="flex items-start gap-2 text-xs sm:text-sm text-slate-700">
-                  <span className="text-emerald-700 font-bold">•</span>
+                <li key={i} className="flex items-start gap-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+                  <span className="text-emerald-700 dark:text-emerald-400 font-bold">•</span>
                   <span>{mission}</span>
                 </li>
               ))}
@@ -141,15 +141,15 @@ export default function AboutPage() {
 
         {/* 4 Valeurs Cardinales */}
         <div>
-          <h3 className="text-2xl font-extrabold text-slate-900 text-center mb-8">
+          <h3 className="text-2xl font-extrabold text-slate-900 dark:text-white text-center mb-8">
             Nos 4 Valeurs Cardinales
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {FOUNDER_DATA.values.map((val, idx) => (
-              <div key={idx} className="p-6 rounded-3xl bg-[#fafbfc] border border-slate-200/90 shadow-xs">
-                <span className="text-2xl font-black text-slate-300 block mb-3">0{idx + 1}</span>
-                <h4 className="font-bold text-slate-900 text-sm mb-2">{val.title}</h4>
-                <p className="text-xs text-slate-500 leading-relaxed">{val.desc}</p>
+              <div key={idx} className="p-6 rounded-3xl bg-[#fafbfc] dark:bg-[#121824] border border-slate-200/90 dark:border-slate-800 shadow-xs">
+                <span className="text-2xl font-black text-slate-300 dark:text-slate-600 block mb-3">0{idx + 1}</span>
+                <h4 className="font-bold text-slate-900 dark:text-white text-sm mb-2">{val.title}</h4>
+                <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">{val.desc}</p>
               </div>
             ))}
           </div>

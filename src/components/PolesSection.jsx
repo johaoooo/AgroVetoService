@@ -53,16 +53,16 @@ export default function PolesSection({ onAction, onOpenModal }) {
   };
 
   return (
-    <section id="poles" className="py-20 bg-slate-50 relative border-t border-slate-200/70">
+    <section id="poles" className="py-20 bg-slate-50 dark:bg-[#0b0f17] relative border-t border-slate-200/70 dark:border-slate-800 transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* En-tête de section */}
         <div className="text-center max-w-3xl mx-auto mb-12 space-y-3">
-          <h2 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
-            Nos <span className="text-emerald-700">6 Pôles d'Expertise</span> Métier
+          <h2 className="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight">
+            Nos <span className="text-emerald-700 dark:text-emerald-400">6 Pôles d'Expertise</span> Métier
           </h2>
 
-          <p className="text-base text-slate-600 font-normal">
+          <p className="text-base text-slate-600 dark:text-slate-300 font-normal">
             De la santé animale à la sécurité de l'assiette du consommateur : une couverture intégrale et scientifique de la chaîne de valeur agropastorale et industrielle.
           </p>
         </div>
@@ -78,11 +78,11 @@ export default function PolesSection({ onAction, onOpenModal }) {
                 onClick={() => setActivePoleId(pole.id)}
                 className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap transition-all cursor-pointer ${
                   isActive
-                    ? 'bg-slate-900 text-white shadow-md'
-                    : 'bg-white hover:bg-slate-200/70 text-slate-700 border border-slate-200'
+                    ? 'bg-slate-900 dark:bg-emerald-600 text-white shadow-md'
+                    : 'bg-white dark:bg-[#121824] hover:bg-slate-200/70 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800'
                 }`}
               >
-                <Icon className={`w-4 h-4 ${isActive ? 'text-emerald-400' : 'text-slate-500'}`} />
+                <Icon className={`w-4 h-4 ${isActive ? 'text-emerald-400 dark:text-white' : 'text-slate-500 dark:text-slate-400'}`} />
                 <span>Pôle 0{pole.id} : {pole.title.split(',')[0]}</span>
               </button>
             );
@@ -90,36 +90,36 @@ export default function PolesSection({ onAction, onOpenModal }) {
         </div>
 
         {/* Carte détaillée du Pôle avec Photographie & Contenu structuré */}
-        <div className="rounded-3xl bg-white text-slate-900 p-6 sm:p-8 md:p-10 shadow-lg border border-slate-200 overflow-hidden">
+        <div className="rounded-3xl bg-white dark:bg-[#121824] text-slate-900 dark:text-white p-6 sm:p-8 md:p-10 shadow-lg border border-slate-200 dark:border-slate-800 overflow-hidden">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
             
             {/* Colonne Gauche : Présentation et Prestations */}
             <div className="lg:col-span-7 space-y-6">
               
               <div className="flex items-center gap-3">
-                <div className="w-11 h-11 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0 font-bold">
+                <div className="w-11 h-11 rounded-xl bg-emerald-100 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-400 flex items-center justify-center shrink-0 font-bold">
                   <CurrentIcon className="w-5 h-5" />
                 </div>
                 <div>
-                  <span className="text-xs font-bold text-emerald-700 uppercase tracking-wider block">
+                  <span className="text-xs font-bold text-emerald-700 dark:text-emerald-400 uppercase tracking-wider block">
                     Pôle Stratégique N°0{currentPole.id}
                   </span>
-                  <h3 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
+                  <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white tracking-tight">
                     {currentPole.title}
                   </h3>
                 </div>
               </div>
 
-              <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
+              <p className="text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
                 {currentPole.shortDesc}
               </p>
 
               {/* Liste structurée des prestations */}
               <div className="space-y-2.5 pt-1">
                 {currentPole.features.map((feature, idx) => (
-                  <div key={idx} className="flex items-start gap-2.5 p-3 rounded-xl bg-slate-50 border border-slate-100">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                    <span className="text-xs sm:text-sm text-slate-700 leading-snug">{feature}</span>
+                  <div key={idx} className="flex items-start gap-2.5 p-3 rounded-xl bg-slate-50 dark:bg-[#192233] border border-slate-100 dark:border-slate-800">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
+                    <span className="text-xs sm:text-sm text-slate-700 dark:text-slate-200 leading-snug">{feature}</span>
                   </div>
                 ))}
               </div>

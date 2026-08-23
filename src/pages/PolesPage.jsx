@@ -40,7 +40,7 @@ export default function PolesPage() {
   };
 
   return (
-    <div className="pb-20 space-y-16 bg-[#f6f8fa]">
+    <div className="pb-20 space-y-16 bg-[#f6f8fa] dark:bg-[#0b0f17] transition-colors">
       
       {/* Hero avec photographie haute résolution */}
       <PageHero
@@ -63,18 +63,18 @@ export default function PolesPage() {
               <div
                 key={pole.id}
                 id={`pole-${pole.id}`}
-                className="rounded-3xl bg-white border border-slate-200 p-6 sm:p-8 shadow-sm space-y-6 hover:border-emerald-500/40 transition-all"
+                className="rounded-3xl bg-white dark:bg-[#121824] border border-slate-200 dark:border-slate-800 p-6 sm:p-8 shadow-sm space-y-6 hover:border-emerald-500/40 transition-all"
               >
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 pb-4">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 dark:border-slate-800 pb-4">
                   <div className="flex items-center gap-3.5">
-                    <div className="w-12 h-12 rounded-2xl bg-emerald-100/70 text-emerald-800 flex items-center justify-center shrink-0">
+                    <div className="w-12 h-12 rounded-2xl bg-emerald-100/70 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-400 flex items-center justify-center shrink-0">
                       <Icon className="w-6 h-6" strokeWidth={1.75} />
                     </div>
                     <div>
-                      <span className="text-xs font-bold text-emerald-700 uppercase tracking-wider block">
+                      <span className="text-xs font-bold text-emerald-700 dark:text-emerald-400 uppercase tracking-wider block">
                         Pôle Stratégique N°0{pole.id}
                       </span>
-                      <h2 className="text-xl sm:text-2xl font-extrabold text-slate-900">
+                      <h2 className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white">
                         {pole.title}
                       </h2>
                     </div>
@@ -92,14 +92,14 @@ export default function PolesPage() {
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
                   {/* Colonne Prestations */}
                   <div className="lg:col-span-8 space-y-4">
-                    <p className="text-slate-600 text-sm leading-relaxed">
+                    <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
                       {pole.shortDesc}
                     </p>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5 pt-1">
                       {pole.features.map((feature, fIdx) => (
-                        <div key={fIdx} className="p-3 rounded-xl bg-slate-50 border border-slate-100 text-xs text-slate-700 flex items-start gap-2">
-                          <span className="text-emerald-600 font-bold">•</span>
+                        <div key={fIdx} className="p-3 rounded-xl bg-slate-50 dark:bg-[#192233] border border-slate-100 dark:border-slate-800 text-xs text-slate-700 dark:text-slate-200 flex items-start gap-2">
+                          <span className="text-emerald-600 dark:text-emerald-400 font-bold">•</span>
                           <span>{feature}</span>
                         </div>
                       ))}
@@ -108,7 +108,7 @@ export default function PolesPage() {
 
                   {/* Colonne Photo */}
                   <div className="lg:col-span-4">
-                    <div className="h-48 sm:h-56 w-full rounded-2xl overflow-hidden shadow-sm bg-slate-100">
+                    <div className="h-48 sm:h-56 w-full rounded-2xl overflow-hidden shadow-sm bg-slate-100 dark:bg-slate-800">
                       <img
                         src={pole.image}
                         alt={pole.title}

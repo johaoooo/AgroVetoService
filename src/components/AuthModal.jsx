@@ -66,12 +66,12 @@ export default function AuthModal({ isOpen, onClose, onLoginSuccess, showToast }
 
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-slate-950/75 backdrop-blur-xs flex items-center justify-center p-4 animate-in fade-in">
-      <div className="bg-[#fafbfc] rounded-3xl max-w-sm w-full p-6 sm:p-7 shadow-2xl border border-slate-200 relative animate-in zoom-in-95">
+      <div className="bg-[#fafbfc] dark:bg-[#121824] rounded-3xl max-w-sm w-full p-6 sm:p-7 shadow-2xl border border-slate-200 dark:border-slate-800 relative animate-in zoom-in-95">
         
         {/* Bouton Fermer */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 p-1.5 rounded-full bg-slate-200/80 text-slate-600 hover:bg-slate-300 transition-colors cursor-pointer"
+          className="absolute top-4 right-4 p-1.5 rounded-full bg-slate-200/80 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700 transition-colors cursor-pointer"
           aria-label="Fermer"
         >
           <X className="w-5 h-5" strokeWidth={1.75} />
@@ -79,10 +79,10 @@ export default function AuthModal({ isOpen, onClose, onLoginSuccess, showToast }
 
         {/* En-tête court */}
         <div className="text-center mb-5 space-y-1">
-          <h2 className="text-xl font-extrabold text-slate-900">
+          <h2 className="text-xl font-extrabold text-slate-900 dark:text-white">
             {isRegister ? 'Créer un Compte Express' : 'Connexion Espace Client'}
           </h2>
-          <p className="text-xs text-slate-500">
+          <p className="text-xs text-slate-500 dark:text-slate-400">
             {isRegister ? 'Accédez au suivi de vos commandes et consultations.' : 'Entrez vos identifiants pour continuer.'}
           </p>
         </div>
@@ -92,7 +92,7 @@ export default function AuthModal({ isOpen, onClose, onLoginSuccess, showToast }
           
           {isRegister && (
             <div>
-              <label className="font-bold text-slate-700 block mb-1">Nom Complet ou Entreprise *</label>
+              <label className="font-bold text-slate-700 dark:text-slate-300 block mb-1">Nom Complet ou Entreprise *</label>
               <div className="relative">
                 <User className="w-4 h-4 text-slate-400 absolute left-3 top-3" strokeWidth={1.75} />
                 <input
@@ -102,14 +102,14 @@ export default function AuthModal({ isOpen, onClose, onLoginSuccess, showToast }
                   placeholder="Ex: Jean Makosso"
                   value={formData.name}
                   onChange={handleInputChange}
-                  className="w-full pl-9 pr-3 py-2.5 bg-[#f1f5f8] border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-600 focus:bg-white text-xs"
+                  className="w-full pl-9 pr-3 py-2.5 bg-[#f1f5f8] dark:bg-[#192233] border border-slate-200 dark:border-slate-800 rounded-xl focus:ring-2 focus:ring-emerald-600 focus:bg-white dark:focus:bg-[#192233] text-slate-900 dark:text-white text-xs"
                 />
               </div>
             </div>
           )}
 
           <div>
-            <label className="font-bold text-slate-700 block mb-1">Numéro WhatsApp / Téléphone *</label>
+            <label className="font-bold text-slate-700 dark:text-slate-300 block mb-1">Numéro WhatsApp / Téléphone *</label>
             <div className="relative">
               <Phone className="w-4 h-4 text-slate-400 absolute left-3 top-3" strokeWidth={1.75} />
               <input
@@ -119,13 +119,13 @@ export default function AuthModal({ isOpen, onClose, onLoginSuccess, showToast }
                 placeholder="+242 06 ..."
                 value={formData.phone}
                 onChange={handleInputChange}
-                className="w-full pl-9 pr-3 py-2.5 bg-[#f1f5f8] border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-600 focus:bg-white text-xs"
+                className="w-full pl-9 pr-3 py-2.5 bg-[#f1f5f8] dark:bg-[#192233] border border-slate-200 dark:border-slate-800 rounded-xl focus:ring-2 focus:ring-emerald-600 focus:bg-white dark:focus:bg-[#192233] text-slate-900 dark:text-white text-xs"
               />
             </div>
           </div>
 
           <div>
-            <label className="font-bold text-slate-700 block mb-1">Mot de Passe *</label>
+            <label className="font-bold text-slate-700 dark:text-slate-300 block mb-1">Mot de Passe *</label>
             <div className="relative">
               <Lock className="w-4 h-4 text-slate-400 absolute left-3 top-3" strokeWidth={1.75} />
               <input
@@ -135,7 +135,7 @@ export default function AuthModal({ isOpen, onClose, onLoginSuccess, showToast }
                 placeholder="••••••••"
                 value={formData.password}
                 onChange={handleInputChange}
-                className="w-full pl-9 pr-3 py-2.5 bg-[#f1f5f8] border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-600 focus:bg-white text-xs"
+                className="w-full pl-9 pr-3 py-2.5 bg-[#f1f5f8] dark:bg-[#192233] border border-slate-200 dark:border-slate-800 rounded-xl focus:ring-2 focus:ring-emerald-600 focus:bg-white dark:focus:bg-[#192233] text-slate-900 dark:text-white text-xs"
               />
             </div>
           </div>
@@ -149,25 +149,25 @@ export default function AuthModal({ isOpen, onClose, onLoginSuccess, showToast }
         </form>
 
         {/* Toggle rapide Connexion / Inscription */}
-        <div className="mt-4 pt-3 border-t border-slate-200 text-center text-xs">
+        <div className="mt-4 pt-3 border-t border-slate-200 dark:border-slate-800 text-center text-xs">
           {isRegister ? (
-            <p className="text-slate-600">
+            <p className="text-slate-600 dark:text-slate-400">
               Déjà un compte ?{' '}
               <button
                 type="button"
                 onClick={() => setIsRegister(false)}
-                className="text-emerald-800 font-bold hover:underline cursor-pointer"
+                className="text-emerald-700 dark:text-emerald-400 font-bold hover:underline cursor-pointer"
               >
                 Se connecter
               </button>
             </p>
           ) : (
-            <p className="text-slate-600">
+            <p className="text-slate-600 dark:text-slate-400">
               Pas encore de compte ?{' '}
               <button
                 type="button"
                 onClick={() => setIsRegister(true)}
-                className="text-emerald-800 font-bold hover:underline cursor-pointer"
+                className="text-emerald-700 dark:text-emerald-400 font-bold hover:underline cursor-pointer"
               >
                 Créer un compte
               </button>

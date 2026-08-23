@@ -60,10 +60,10 @@ export default function QuickActions() {
             <div
               key={item.path}
               onClick={() => navigate(item.path)}
-              className="group cursor-pointer rounded-2xl bg-white overflow-hidden shadow-md hover:shadow-xl border border-slate-200/80 transition-all duration-300 hover:translate-y-[-4px] flex flex-col justify-between"
+              className="group cursor-pointer rounded-2xl bg-white dark:bg-[#121824] overflow-hidden shadow-md hover:shadow-xl border border-slate-200/80 dark:border-slate-800 transition-all duration-300 hover:translate-y-[-4px] flex flex-col justify-between"
             >
               {/* Photo d'en-tête avec badge contextuel */}
-              <div className="relative h-36 w-full overflow-hidden bg-slate-100">
+              <div className="relative h-36 w-full overflow-hidden bg-slate-100 dark:bg-slate-800">
                 <img
                   src={item.image}
                   alt={item.title}
@@ -71,8 +71,8 @@ export default function QuickActions() {
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent"></div>
-                <div className="absolute top-3 left-3 w-9 h-9 rounded-xl backdrop-blur-md bg-white/90 shadow-sm flex items-center justify-center">
-                  <Icon className="w-5 h-5 text-slate-900" strokeWidth={1.8} />
+                <div className="absolute top-3 left-3 w-9 h-9 rounded-xl backdrop-blur-md bg-white/90 dark:bg-slate-900/90 shadow-sm flex items-center justify-center">
+                  <Icon className="w-5 h-5 text-slate-900 dark:text-emerald-400" strokeWidth={1.8} />
                 </div>
                 <div className="absolute bottom-2.5 right-3 text-[11px] font-bold text-white bg-slate-950/70 backdrop-blur-xs px-2.5 py-0.5 rounded-full border border-white/20">
                   {item.badge}
@@ -82,16 +82,16 @@ export default function QuickActions() {
               {/* Corps texte organisé */}
               <div className="p-5 flex-1 flex flex-col justify-between">
                 <div>
-                  <h3 className="font-bold text-slate-900 text-base mb-1.5 group-hover:text-emerald-700 transition-colors">
+                  <h3 className="font-bold text-slate-900 dark:text-white text-base mb-1.5 group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors">
                     {item.title}
                   </h3>
-                  <p className="text-xs text-slate-600 leading-relaxed line-clamp-2">
+                  <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed line-clamp-2">
                     {item.subtitle}
                   </p>
                 </div>
 
                 {/* Pied de carte avec lien d'action */}
-                <div className="pt-4 mt-4 border-t border-slate-100 text-xs font-bold text-slate-900 group-hover:text-emerald-700 flex items-center justify-between transition-colors">
+                <div className="pt-4 mt-4 border-t border-slate-100 dark:border-slate-800 text-xs font-bold text-slate-900 dark:text-slate-200 group-hover:text-emerald-700 dark:group-hover:text-emerald-400 flex items-center justify-between transition-colors">
                   <span>{item.btnText}</span>
                   <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" strokeWidth={2} />
                 </div>

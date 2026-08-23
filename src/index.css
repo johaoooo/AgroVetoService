@@ -20,7 +20,7 @@
 
   html.dark {
     --bg-soft: #0b0f17;
-    --card-soft: #131924;
+    --card-soft: #121824;
     --text-main: #f8fafc;
     --text-muted: #94a3b8;
     --border-color: #1e293b;
@@ -40,40 +40,170 @@
   }
 }
 
-/* Adaptations globales en mode sombre */
-.dark body {
-  background-color: #0b0f17;
-  color: #f8fafc;
+/* ========================================================
+   ADAPTATION COMPLÈTE & RIGOUREUSE DU MODE SOMBRE
+   ======================================================== */
+
+.dark body,
+.dark main {
+  background-color: #0b0f17 !important;
+  color: #f8fafc !important;
 }
 
-.dark .bg-white {
-  background-color: #131924 !important;
-  color: #f8fafc;
+/* Fonds de sections et conteneurs */
+.dark section,
+.dark div.bg-\[\#f6f8fa\],
+.dark div.bg-\[\#edf2f6\],
+.dark div.bg-\[\#fafbfc\],
+.dark div.bg-\[\#eef2f5\],
+.dark div.bg-\[\#f1f5f8\],
+.dark section.bg-\[\#edf2f6\],
+.dark section.bg-\[\#eef2f5\],
+.dark section.bg-\[\#f6f8fa\],
+.dark .bg-slate-50 {
+  background-color: #0b0f17 !important;
 }
 
-.dark .bg-slate-50,
+/* Fonds de cartes & modales */
+.dark .bg-white,
+.dark div.bg-\[\#fafbfc\],
+.dark div.bg-\[\#fcfdfe\],
 .dark .bg-slate-100 {
-  background-color: #0e141f !important;
+  background-color: #131926 !important;
+}
+
+/* Éléments imbriqués de niveau 2 (champs, puces, sous-blocs) */
+.dark .bg-slate-50,
+.dark .bg-slate-100\/70,
+.dark .bg-slate-100\/80,
+.dark div.bg-\[\#f1f5f8\] {
+  background-color: #192233 !important;
+}
+
+/* Champs de formulaires en mode sombre */
+.dark input:not([type="checkbox"]):not([type="radio"]),
+.dark select,
+.dark textarea {
+  background-color: #192233 !important;
+  color: #f8fafc !important;
+  border-color: #2a374d !important;
+}
+
+.dark input::placeholder,
+.dark textarea::placeholder {
+  color: #64748b !important;
+}
+
+.dark input:focus,
+.dark select:focus,
+.dark textarea:focus {
+  border-color: #10b981 !important;
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.25) !important;
+}
+
+/* Bordures en mode sombre */
+.dark * {
+  border-color: #1e293b;
 }
 
 .dark .border-slate-100,
-.dark .border-slate-200 {
-  border-color: #1e293b !important;
+.dark .border-slate-200,
+.dark .border-slate-200\/60,
+.dark .border-slate-200\/80,
+.dark .border-slate-200\/90,
+.dark .border-slate-300,
+.dark .border-slate-300\/80 {
+  border-color: #1f2a3d !important;
 }
 
+.dark .divide-slate-100 > :not([hidden]) ~ :not([hidden]),
+.dark .divide-slate-200 > :not([hidden]) ~ :not([hidden]) {
+  border-color: #1f2a3d !important;
+}
+
+/* Typographie & Titres en mode sombre */
+.dark h1,
+.dark h2,
+.dark h3,
+.dark h4,
 .dark .text-slate-900,
 .dark .text-slate-800 {
   color: #f8fafc !important;
 }
 
+.dark p,
 .dark .text-slate-700,
 .dark .text-slate-600 {
-  color: #cbd5e1 !important;
+  color: #94a3b8 !important;
 }
 
 .dark .text-slate-500,
 .dark .text-slate-400 {
-  color: #94a3b8 !important;
+  color: #64748b !important;
+}
+
+/* Contrastes & Badges en mode sombre */
+.dark .text-emerald-700,
+.dark .text-emerald-800,
+.dark .text-emerald-900 {
+  color: #34d399 !important;
+}
+
+.dark .bg-emerald-100,
+.dark .bg-emerald-100\/60,
+.dark .bg-emerald-100\/70,
+.dark .bg-emerald-100\/80,
+.dark .bg-emerald-50 {
+  background-color: rgba(5, 150, 105, 0.2) !important;
+  color: #6ee7b7 !important;
+}
+
+.dark .text-sky-700,
+.dark .text-sky-800,
+.dark .text-sky-900 {
+  color: #38bdf8 !important;
+}
+
+.dark .bg-sky-100,
+.dark .bg-sky-50 {
+  background-color: rgba(14, 165, 233, 0.2) !important;
+  color: #7dd3fc !important;
+}
+
+.dark .text-amber-700,
+.dark .text-amber-800,
+.dark .text-amber-900 {
+  color: #fbbf24 !important;
+}
+
+.dark .bg-amber-100,
+.dark .bg-amber-50 {
+  background-color: rgba(245, 158, 11, 0.2) !important;
+  color: #fde68a !important;
+}
+
+.dark .bg-slate-200,
+.dark .bg-slate-200\/60,
+.dark .bg-slate-200\/70,
+.dark .bg-slate-200\/80 {
+  background-color: #1f2a3d !important;
+  color: #cbd5e1 !important;
+}
+
+.dark .hover\:bg-slate-200:hover,
+.dark .hover\:bg-slate-200\/50:hover,
+.dark .hover\:bg-slate-200\/60:hover {
+  background-color: #27354d !important;
+}
+
+/* Ombres douces en mode sombre */
+.dark .shadow-xs,
+.dark .shadow-sm,
+.dark .shadow-md,
+.dark .shadow-lg,
+.dark .shadow-xl,
+.dark .shadow-2xl {
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.5) !important;
 }
 
 /* Animations douces */

@@ -34,16 +34,16 @@ export default function ContactSection({ showToast }) {
   };
 
   return (
-    <section id="contact" className="py-16 bg-[#edf2f6] relative">
+    <section id="contact" className="py-16 bg-[#edf2f6] dark:bg-[#0b0f17] relative transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* En-tête */}
         <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
-            Restons en <span className="text-emerald-700">Contact</span>
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+            Restons en <span className="text-emerald-700 dark:text-emerald-400">Contact</span>
           </h2>
 
-          <p className="text-sm sm:text-base text-slate-600 font-normal">
+          <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 font-normal">
             Une question sur nos poussins, une commande de provenderie ou un projet d'audit QHSE ? Nos spécialistes vous répondent rapidement.
           </p>
         </div>
@@ -53,38 +53,38 @@ export default function ContactSection({ showToast }) {
           {/* Colonne Gauche : Coordonnées & Réseaux Sociaux */}
           <div className="lg:col-span-5 space-y-6">
             
-            <div className="rounded-3xl bg-[#fafbfc] p-7 border border-slate-200/90 shadow-xs space-y-5">
-              <h3 className="text-lg font-bold text-slate-900 border-b border-slate-200 pb-3">
+            <div className="rounded-3xl bg-[#fafbfc] dark:bg-[#121824] p-7 border border-slate-200/90 dark:border-slate-800 shadow-xs space-y-5">
+              <h3 className="text-lg font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-3">
                 Siège Social & Coordonnées
               </h3>
 
-              <div className="space-y-4 text-xs sm:text-sm text-slate-700">
+              <div className="space-y-4 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
                 <div>
-                  <span className="font-bold text-slate-900 block mb-0.5">Adresse Officielle :</span>
-                  <p className="text-slate-600">{COMPANY_INFO.address.full}</p>
+                  <span className="font-bold text-slate-900 dark:text-white block mb-0.5">Adresse Officielle :</span>
+                  <p className="text-slate-600 dark:text-slate-300">{COMPANY_INFO.address.full}</p>
                 </div>
 
                 <div>
-                  <span className="font-bold text-slate-900 block mb-0.5">Téléphone & WhatsApp :</span>
-                  <p className="text-slate-600">{COMPANY_INFO.phone}</p>
+                  <span className="font-bold text-slate-900 dark:text-white block mb-0.5">Téléphone & WhatsApp :</span>
+                  <p className="text-slate-600 dark:text-slate-300">{COMPANY_INFO.phone}</p>
                 </div>
 
                 <div>
-                  <span className="font-bold text-slate-900 block mb-0.5">Courriel Professionnel :</span>
-                  <p className="text-slate-600">{COMPANY_INFO.email}</p>
+                  <span className="font-bold text-slate-900 dark:text-white block mb-0.5">Courriel Professionnel :</span>
+                  <p className="text-slate-600 dark:text-slate-300">{COMPANY_INFO.email}</p>
                 </div>
 
                 <div>
-                  <span className="font-bold text-slate-900 block mb-0.5">Horaires d'Ouverture :</span>
-                  <p className="text-slate-600">{COMPANY_INFO.openingHours.weekdays}</p>
-                  <p className="text-slate-600">{COMPANY_INFO.openingHours.saturday}</p>
-                  <p className="text-emerald-700 font-bold mt-1">{COMPANY_INFO.openingHours.emergencies}</p>
+                  <span className="font-bold text-slate-900 dark:text-white block mb-0.5">Horaires d'Ouverture :</span>
+                  <p className="text-slate-600 dark:text-slate-300">{COMPANY_INFO.openingHours.weekdays}</p>
+                  <p className="text-slate-600 dark:text-slate-300">{COMPANY_INFO.openingHours.saturday}</p>
+                  <p className="text-emerald-700 dark:text-emerald-400 font-bold mt-1">{COMPANY_INFO.openingHours.emergencies}</p>
                 </div>
               </div>
 
               {/* Bloc Réseaux Sociaux */}
-              <div className="pt-4 border-t border-slate-200">
-                <span className="text-xs font-bold text-slate-900 block mb-2.5">
+              <div className="pt-4 border-t border-slate-200 dark:border-slate-800">
+                <span className="text-xs font-bold text-slate-900 dark:text-white block mb-2.5">
                   Suivez-nous sur les réseaux :
                 </span>
                 <div className="flex items-center gap-2">
@@ -92,7 +92,7 @@ export default function ContactSection({ showToast }) {
                     href={COMPANY_INFO.socials.facebook}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-9 h-9 rounded-xl bg-slate-200/80 hover:bg-[#1877F2] text-slate-700 hover:text-white flex items-center justify-center transition-all shadow-xs"
+                    className="w-9 h-9 rounded-xl bg-slate-200/80 dark:bg-slate-800 hover:bg-[#1877F2] text-slate-700 dark:text-slate-300 hover:text-white flex items-center justify-center transition-all shadow-xs"
                     title="Facebook"
                   >
                     <FacebookIcon className="w-4 h-4" />
@@ -102,7 +102,7 @@ export default function ContactSection({ showToast }) {
                     href={COMPANY_INFO.socials.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-9 h-9 rounded-xl bg-slate-200/80 hover:bg-[#0A66C2] text-slate-700 hover:text-white flex items-center justify-center transition-all shadow-xs"
+                    className="w-9 h-9 rounded-xl bg-slate-200/80 dark:bg-slate-800 hover:bg-[#0A66C2] text-slate-700 dark:text-slate-300 hover:text-white flex items-center justify-center transition-all shadow-xs"
                     title="LinkedIn"
                   >
                     <LinkedInIcon className="w-4 h-4" />
@@ -112,7 +112,7 @@ export default function ContactSection({ showToast }) {
                     href={`https://wa.me/${COMPANY_INFO.whatsapp}?text=Bonjour%20AGRO%20VETO%20SERVICES`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-9 h-9 rounded-xl bg-slate-200/80 hover:bg-[#25D366] text-slate-700 hover:text-white flex items-center justify-center transition-all shadow-xs"
+                    className="w-9 h-9 rounded-xl bg-slate-200/80 dark:bg-slate-800 hover:bg-[#25D366] text-slate-700 dark:text-slate-300 hover:text-white flex items-center justify-center transition-all shadow-xs"
                     title="WhatsApp"
                   >
                     <WhatsAppIcon className="w-4 h-4" />
@@ -122,7 +122,7 @@ export default function ContactSection({ showToast }) {
                     href={COMPANY_INFO.socials.instagram}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-9 h-9 rounded-xl bg-slate-200/80 hover:bg-[#E4405F] text-slate-700 hover:text-white flex items-center justify-center transition-all shadow-xs"
+                    className="w-9 h-9 rounded-xl bg-slate-200/80 dark:bg-slate-800 hover:bg-[#E4405F] text-slate-700 dark:text-slate-300 hover:text-white flex items-center justify-center transition-all shadow-xs"
                     title="Instagram"
                   >
                     <InstagramIcon className="w-4 h-4" />
@@ -132,7 +132,7 @@ export default function ContactSection({ showToast }) {
                     href={COMPANY_INFO.socials.tiktok}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-9 h-9 rounded-xl bg-slate-200/80 hover:bg-black text-slate-700 hover:text-white flex items-center justify-center transition-all shadow-xs"
+                    className="w-9 h-9 rounded-xl bg-slate-200/80 dark:bg-slate-800 hover:bg-black text-slate-700 dark:text-slate-300 hover:text-white flex items-center justify-center transition-all shadow-xs"
                     title="TikTok"
                   >
                     <TikTokIcon className="w-4 h-4" />
@@ -164,18 +164,18 @@ export default function ContactSection({ showToast }) {
 
           {/* Colonne Droite : Formulaire */}
           <div className="lg:col-span-7">
-            <div className="rounded-3xl bg-[#fafbfc] p-7 sm:p-9 border border-slate-200/90 shadow-xs">
-              <h3 className="text-lg font-bold text-slate-900 mb-6">
+            <div className="rounded-3xl bg-[#fafbfc] dark:bg-[#121824] p-7 sm:p-9 border border-slate-200/90 dark:border-slate-800 shadow-xs">
+              <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-6">
                 Envoyez-nous un Message
               </h3>
 
               {isSent ? (
                 <div className="text-center py-10 space-y-3">
-                  <h4 className="text-lg font-bold text-slate-900">Message Transmis !</h4>
-                  <p className="text-xs text-slate-600">Notre équipe a bien reçu votre demande et vous recontactera rapidement.</p>
+                  <h4 className="text-lg font-bold text-slate-900 dark:text-white">Message Transmis !</h4>
+                  <p className="text-xs text-slate-600 dark:text-slate-300">Notre équipe a bien reçu votre demande et vous recontactera rapidement.</p>
                   <button
                     onClick={() => setIsSent(false)}
-                    className="px-5 py-2.5 bg-slate-900 text-white text-xs font-bold rounded-xl cursor-pointer"
+                    className="px-5 py-2.5 bg-slate-900 dark:bg-emerald-600 text-white text-xs font-bold rounded-xl cursor-pointer"
                   >
                     Envoyer un autre message
                   </button>
@@ -185,78 +185,79 @@ export default function ContactSection({ showToast }) {
                   
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="font-bold text-slate-700 block mb-1">Votre Nom & Prénom *</label>
+                      <label className="font-bold text-slate-700 dark:text-slate-300 block mb-1">Votre Nom & Prénom *</label>
                       <input
                         type="text"
                         required
                         placeholder="Ex: Mme Ndoudi"
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        className="w-full px-3.5 py-2.5 bg-[#f1f5f8] border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-600 focus:bg-white"
+                        className="w-full px-3.5 py-2.5 bg-[#f1f5f8] dark:bg-[#192233] border border-slate-200 dark:border-slate-800 rounded-xl focus:ring-2 focus:ring-emerald-600 focus:bg-white dark:focus:bg-[#192233] text-slate-900 dark:text-white"
                       />
                     </div>
 
                     <div>
-                      <label className="font-bold text-slate-700 block mb-1">Téléphone / WhatsApp *</label>
+                      <label className="font-bold text-slate-700 dark:text-slate-300 block mb-1">Téléphone / WhatsApp *</label>
                       <input
                         type="tel"
                         required
-                        placeholder="+242 06 ..."
+                        placeholder="Ex: +242 06 534 87 23"
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        className="w-full px-3.5 py-2.5 bg-[#f1f5f8] border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-600 focus:bg-white"
+                        className="w-full px-3.5 py-2.5 bg-[#f1f5f8] dark:bg-[#192233] border border-slate-200 dark:border-slate-800 rounded-xl focus:ring-2 focus:ring-emerald-600 focus:bg-white dark:focus:bg-[#192233] text-slate-900 dark:text-white"
                       />
                     </div>
                   </div>
 
-                  <div>
-                    <label className="font-bold text-slate-700 block mb-1">Adresse Email</label>
-                    <input
-                      type="email"
-                      placeholder="votre.email@exemple.com"
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full px-3.5 py-2.5 bg-[#f1f5f8] border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-600 focus:bg-white"
-                    />
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="font-bold text-slate-700 dark:text-slate-300 block mb-1">Courriel (Optionnel)</label>
+                      <input
+                        type="email"
+                        placeholder="contact@exemple.cg"
+                        value={formData.email}
+                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        className="w-full px-3.5 py-2.5 bg-[#f1f5f8] dark:bg-[#192233] border border-slate-200 dark:border-slate-800 rounded-xl focus:ring-2 focus:ring-emerald-600 focus:bg-white dark:focus:bg-[#192233] text-slate-900 dark:text-white"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="font-bold text-slate-700 dark:text-slate-300 block mb-1">Objet de la demande *</label>
+                      <select
+                        value={formData.subject}
+                        onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                        className="w-full px-3.5 py-2.5 bg-[#f1f5f8] dark:bg-[#192233] border border-slate-200 dark:border-slate-800 rounded-xl focus:ring-2 focus:ring-emerald-600 focus:bg-white dark:focus:bg-[#192233] text-slate-900 dark:text-white"
+                      >
+                        <option value="Commande Poussins / Aliments Provenderie">Commande Poussins / Aliments Provenderie</option>
+                        <option value="Rendez-vous Clinique Vétérinaire">Rendez-vous Clinique Vétérinaire</option>
+                        <option value="Inscription Formations Pratiques">Inscription Formations Pratiques</option>
+                        <option value="Demande d'Audit & Conseil QHSE">Demande d'Audit & Conseil QHSE</option>
+                        <option value="Partenariat ou Autre demande">Partenariat ou Autre demande</option>
+                      </select>
+                    </div>
                   </div>
 
                   <div>
-                    <label className="font-bold text-slate-700 block mb-1">Motif de votre demande *</label>
-                    <select
-                      value={formData.subject}
-                      onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                      className="w-full px-3.5 py-2.5 bg-[#f1f5f8] border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-600 focus:bg-white"
-                    >
-                      <option value="Commande Poussins / Aliments Provenderie">Commande Poussins / Aliments Provenderie</option>
-                      <option value="Rendez-vous Clinique Vétérinaire">Rendez-vous Clinique Vétérinaire</option>
-                      <option value="Demande de Devis QHSE / Audit ISO">Demande de Devis QHSE / Audit ISO</option>
-                      <option value="Inscription à une Session de Formation">Inscription à une Session de Formation</option>
-                      <option value="Produits d'Hygiène & Cosmétique">Produits d'Hygiène & Cosmétique</option>
-                      <option value="Autre demande">Autre demande générale</option>
-                    </select>
-                  </div>
-
-                  <div>
-                    <label className="font-bold text-slate-700 block mb-1">Votre Message *</label>
+                    <label className="font-bold text-slate-700 dark:text-slate-300 block mb-1">Votre Message détaillé *</label>
                     <textarea
-                      rows="4"
                       required
-                      placeholder="Écrivez votre message ici..."
+                      rows={4}
+                      placeholder="Précisez votre besoin, vos quantités ou vos questions..."
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className="w-full px-3.5 py-2.5 bg-[#f1f5f8] border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-600 focus:bg-white"
+                      className="w-full px-3.5 py-2.5 bg-[#f1f5f8] dark:bg-[#192233] border border-slate-200 dark:border-slate-800 rounded-xl focus:ring-2 focus:ring-emerald-600 focus:bg-white dark:focus:bg-[#192233] text-slate-900 dark:text-white resize-none"
                     ></textarea>
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full py-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-sm transition-all text-center cursor-pointer mt-2"
+                    className="w-full py-3.5 px-6 rounded-xl bg-slate-900 dark:bg-emerald-600 hover:bg-emerald-700 dark:hover:bg-emerald-500 text-white font-bold text-xs sm:text-sm transition-all shadow-xs cursor-pointer"
                   >
-                    Envoyer le Message
+                    Envoyer via WhatsApp Direct
                   </button>
+
                 </form>
               )}
-
             </div>
           </div>
 

@@ -8,7 +8,7 @@ import PageHero from '../components/PageHero';
  */
 export default function TrainingPage({ showToast }) {
   return (
-    <div className="pb-16 space-y-12 bg-[#f6f8fa]">
+    <div className="pb-16 space-y-12 bg-[#f6f8fa] dark:bg-[#0b0f17] transition-colors">
       
       {/* Hero avec photographie haute résolution */}
       <PageHero
@@ -21,20 +21,20 @@ export default function TrainingPage({ showToast }) {
 
       {/* Rassurance pédagogique sobre */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 p-6 rounded-3xl bg-[#fafbfc] border border-slate-200/90 text-xs">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 p-6 rounded-3xl bg-[#fafbfc] dark:bg-[#121824] border border-slate-200/90 dark:border-slate-800 text-xs">
           <div>
-            <span className="font-bold text-slate-900 block text-sm mb-1">Attestations Certifiantes</span>
-            <p className="text-slate-500">Validation officielle des acquis et délivrance de certificat de fin de formation.</p>
+            <span className="font-bold text-slate-900 dark:text-white block text-sm mb-1">Attestations Certifiantes</span>
+            <p className="text-slate-500 dark:text-slate-400">Validation officielle des acquis et délivrance de certificat de fin de formation.</p>
           </div>
 
           <div>
-            <span className="font-bold text-slate-900 block text-sm mb-1">Immersion Ferme-École</span>
-            <p className="text-slate-500">Pratique directe sur cheptel vivant et ateliers techniques de production.</p>
+            <span className="font-bold text-slate-900 dark:text-white block text-sm mb-1">Immersion Ferme-École</span>
+            <p className="text-slate-500 dark:text-slate-400">Pratique directe sur cheptel vivant et ateliers techniques de production.</p>
           </div>
 
           <div>
-            <span className="font-bold text-slate-900 block text-sm mb-1">Suivi Post-Formation</span>
-            <p className="text-slate-500">Accompagnement continu par nos vétérinaires pour la rentabilité de votre projet.</p>
+            <span className="font-bold text-slate-900 dark:text-white block text-sm mb-1">Suivi Post-Formation</span>
+            <p className="text-slate-500 dark:text-slate-400">Accompagnement continu par nos vétérinaires pour la rentabilité de votre projet.</p>
           </div>
         </div>
       </div>
