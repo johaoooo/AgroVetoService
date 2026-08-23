@@ -19,43 +19,43 @@ import heroAgroImg from '../assets/hero_agropastoral.jpg';
 const STREAM_MESSAGES = [
   { 
     tag: "CLINIQUE", 
-    tagColor: "text-sky-800 bg-sky-100/90 border-sky-300 dark:text-sky-400 dark:bg-sky-500/15 dark:border-sky-500/30", 
+    tagColor: "text-sky-300 bg-sky-500/20 border-sky-400/30", 
     text: "Urgences vétérinaires 24h/24, consultations et chirurgies actives au quartier Socoprise, Pointe-Noire." 
   },
   { 
     tag: "PROVENDERIE", 
-    tagColor: "text-emerald-800 bg-emerald-100/90 border-emerald-300 dark:text-emerald-400 dark:bg-emerald-500/15 dark:border-emerald-500/30", 
+    tagColor: "text-emerald-300 bg-emerald-500/20 border-emerald-400/30", 
     text: "Arrivage permanent de poussins d'un jour Cobb 500 vaccinés et aliments provenderie haute performance." 
   },
   { 
     tag: "CONSEIL QHSE", 
-    tagColor: "text-amber-800 bg-amber-100/90 border-amber-300 dark:text-amber-400 dark:bg-amber-500/15 dark:border-amber-500/30", 
+    tagColor: "text-amber-300 bg-amber-500/20 border-amber-400/30", 
     text: "Accompagnement normatif ISO 9001/14001/45001, méthode HACCP & formule « QHSE Partagé » pour les entreprises." 
   },
   { 
     tag: "FERMES-ÉCOLES", 
-    tagColor: "text-emerald-800 bg-emerald-100/90 border-emerald-300 dark:text-emerald-400 dark:bg-emerald-500/15 dark:border-emerald-500/30", 
+    tagColor: "text-emerald-300 bg-emerald-500/20 border-emerald-400/30", 
     text: "Sessions de formation 100% pratiques en élevage avicole, gestion de cheptel et biosécurité terrain." 
   },
   { 
     tag: "LABORATOIRE", 
-    tagColor: "text-sky-800 bg-sky-100/90 border-sky-300 dark:text-sky-400 dark:bg-sky-500/15 dark:border-sky-500/30", 
+    tagColor: "text-sky-300 bg-sky-500/20 border-sky-400/30", 
     text: "Analyses bromatologiques, coprologie, autopsies aviaires et diagnostic vétérinaire de précision." 
   },
   { 
     tag: "SAVOIR-FAIRE", 
-    tagColor: "text-amber-800 bg-amber-100/90 border-amber-300 dark:text-amber-400 dark:bg-amber-500/15 dark:border-amber-500/30", 
+    tagColor: "text-amber-300 bg-amber-500/20 border-amber-400/30", 
     text: "Ateliers pratiques de saponification, formulation de savons durs, liquides et détergents ménagers." 
   },
   { 
     tag: "DIRECTION", 
-    tagColor: "text-emerald-800 bg-emerald-100/90 border-emerald-300 dark:text-emerald-400 dark:bg-emerald-500/15 dark:border-emerald-500/30", 
+    tagColor: "text-emerald-300 bg-emerald-500/20 border-emerald-400/30", 
     text: "Dr POUTYA SAIZONOU : L'expertise au service de la santé animale, de la qualité agroalimentaire et du QHSE." 
   }
 ];
 
 /**
- * Composant HeroSlider avec flux de texte en cours de saisie défilant vers le haut
+ * Composant HeroSlider avec flux de texte direct sans cadre englobant
  */
 export default function HeroSlider() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -189,7 +189,7 @@ export default function HeroSlider() {
 
       {/* 2. Contenu principal structuré */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           
           {/* Colonne Gauche : Présentation principale */}
           <div className="lg:col-span-7 space-y-6 text-left">
@@ -237,115 +237,108 @@ export default function HeroSlider() {
             </div>
           </div>
 
-          {/* Colonne Droite : Terminal Clair & Lumineux en verre dépoli (Frosted Glass) */}
-          <div className="lg:col-span-5">
-            <div className="rounded-3xl bg-white/95 dark:bg-[#121824]/90 backdrop-blur-xl border border-white/80 dark:border-slate-800 p-5 sm:p-6 shadow-2xl space-y-4 text-slate-900 dark:text-white flex flex-col justify-between transition-colors">
-              
-              {/* En-tête du Terminal */}
-              <div className="flex items-center justify-between border-b border-slate-200/90 dark:border-slate-800 pb-3">
-                <div className="flex items-center gap-2">
-                  <div className="flex items-center gap-1.5">
-                    <span className="w-2.5 h-2.5 rounded-full bg-rose-400 inline-block"></span>
-                    <span className="w-2.5 h-2.5 rounded-full bg-amber-400 inline-block"></span>
-                    <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 inline-block"></span>
-                  </div>
-                  <span className="text-xs font-bold text-slate-800 dark:text-slate-200 ml-2 tracking-wide flex items-center gap-1.5 font-sans">
-                    <Terminal className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
-                    <span>AVS CONGO • EXPERTISE EN DIRECT</span>
-                  </span>
-                </div>
-
-                <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-100 dark:bg-emerald-500/15 border border-emerald-300 dark:border-emerald-500/30 text-[10px] font-extrabold text-emerald-800 dark:text-emerald-400">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 dark:bg-emerald-400 animate-ping"></span>
-                  <span>LIVE</span>
-                </div>
+          {/* Colonne Droite : Flux de Texte Épuré SANS CADRE (Frameless Live Stream) */}
+          <div className="lg:col-span-5 space-y-4">
+            
+            {/* En-tête discret sans boîte */}
+            <div className="flex items-center justify-between pb-2 border-b border-white/15">
+              <div className="flex items-center gap-2">
+                <Terminal className="w-4 h-4 text-emerald-400" />
+                <span className="text-xs font-extrabold text-white tracking-wider uppercase font-sans">
+                  AVS CONGO • FLUX EN DIRECT
+                </span>
               </div>
 
-              {/* Zone de texte saisie en direct et défilant vers le haut */}
-              <div className="h-[210px] overflow-y-auto space-y-3 text-xs pr-1 scrollbar-thin scrollbar-thumb-slate-300 dark:scrollbar-thumb-white/10 flex flex-col justify-end">
-                
-                {/* Lignes précédemment complétées qui montent */}
-                {completedLines.map((line) => (
-                  <div 
-                    key={line.id} 
-                    className="space-y-1 transition-all duration-500 opacity-80 hover:opacity-100"
-                  >
-                    <div className="flex items-center gap-2">
-                      <span className={`px-2 py-0.5 rounded-md text-[9px] font-black uppercase tracking-wider border ${line.tagColor}`}>
-                        {line.tag}
-                      </span>
-                      <span className="text-[10px] text-slate-500 dark:text-slate-400 font-sans">
-                        Pointe-Noire
-                      </span>
-                    </div>
-                    <p className="text-slate-700 dark:text-slate-300 text-xs font-sans leading-relaxed pl-2 border-l-2 border-slate-200 dark:border-slate-800">
-                      {line.text}
-                    </p>
-                  </div>
-                ))}
-
-                {/* Ligne actuellement en cours de frappe / saisie */}
-                {isTyping && currentMsgObj && (
-                  <div className="space-y-1 pt-1">
-                    <div className="flex items-center gap-2">
-                      <span className={`px-2 py-0.5 rounded-md text-[9px] font-black uppercase tracking-wider border ${currentMsgObj.tagColor} animate-pulse`}>
-                        {currentMsgObj.tag}
-                      </span>
-                      <span className="text-[10px] text-emerald-700 dark:text-emerald-400 font-sans font-semibold flex items-center gap-1">
-                        <Activity className="w-3 h-3 animate-spin" />
-                        <span>Transmission en direct...</span>
-                      </span>
-                    </div>
-                    <p className="text-slate-900 dark:text-white font-semibold text-xs font-sans leading-relaxed pl-2 border-l-2 border-emerald-600 dark:border-emerald-400">
-                      <span>{typedChars}</span>
-                      <span className="inline-block w-1.5 h-3.5 bg-emerald-600 dark:bg-emerald-400 animate-pulse ml-1 align-middle"></span>
-                    </p>
-                  </div>
-                )}
-
-                <div ref={streamEndRef} />
+              <div className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/20 border border-emerald-400/40 text-[10px] font-extrabold text-emerald-300">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
+                <span>LIVE</span>
               </div>
-
-              {/* Raccourcis d'accès rapide en bas du terminal */}
-              <div className="pt-3 border-t border-slate-200/90 dark:border-slate-800 space-y-2.5">
-                <div className="grid grid-cols-3 gap-2 text-[11px]">
-                  <button
-                    onClick={() => navigate('/clinique')}
-                    className="py-1.5 px-2 rounded-xl bg-slate-100 hover:bg-slate-200/80 dark:bg-white/5 dark:hover:bg-white/15 border border-slate-200 dark:border-white/10 text-slate-800 hover:text-slate-950 dark:text-slate-200 dark:hover:text-white font-bold transition cursor-pointer text-center truncate flex items-center justify-center gap-1"
-                  >
-                    <Stethoscope className="w-3 h-3 text-sky-600 dark:text-sky-400 shrink-0" />
-                    <span>Clinique</span>
-                  </button>
-                  <button
-                    onClick={() => navigate('/boutique')}
-                    className="py-1.5 px-2 rounded-xl bg-slate-100 hover:bg-slate-200/80 dark:bg-white/5 dark:hover:bg-white/15 border border-slate-200 dark:border-white/10 text-slate-800 hover:text-slate-950 dark:text-slate-200 dark:hover:text-white font-bold transition cursor-pointer text-center truncate flex items-center justify-center gap-1"
-                  >
-                    <Wheat className="w-3 h-3 text-emerald-600 dark:text-emerald-400 shrink-0" />
-                    <span>Poussins</span>
-                  </button>
-                  <button
-                    onClick={() => navigate('/devis-qhse')}
-                    className="py-1.5 px-2 rounded-xl bg-slate-100 hover:bg-slate-200/80 dark:bg-white/5 dark:hover:bg-white/15 border border-slate-200 dark:border-white/10 text-slate-800 hover:text-slate-950 dark:text-slate-200 dark:hover:text-white font-bold transition cursor-pointer text-center truncate flex items-center justify-center gap-1"
-                  >
-                    <ShieldCheck className="w-3 h-3 text-amber-600 dark:text-amber-400 shrink-0" />
-                    <span>QHSE</span>
-                  </button>
-                </div>
-
-                {/* Bouton direct WhatsApp */}
-                <a
-                  href={`https://wa.me/${COMPANY_INFO.whatsapp}?text=Bonjour%20AGRO%20VETO%20SERVICES%2C%20je%20souhaite%20des%20informations.`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full flex items-center justify-center gap-2 py-2.5 px-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold transition shadow-md cursor-pointer"
-                >
-                  <MessageCircle className="w-3.5 h-3.5 fill-current" />
-                  <span>Échanger en direct sur WhatsApp</span>
-                  <ChevronRight className="w-3.5 h-3.5" />
-                </a>
-              </div>
-
             </div>
+
+            {/* Zone de texte sans cadre : flottant naturellement */}
+            <div className="h-[210px] overflow-y-auto space-y-3.5 text-xs pr-1 scrollbar-none flex flex-col justify-end">
+              
+              {/* Lignes précédemment complétées qui défilent vers le haut */}
+              {completedLines.map((line) => (
+                <div 
+                  key={line.id} 
+                  className="space-y-1 transition-all duration-500 opacity-70 hover:opacity-100"
+                >
+                  <div className="flex items-center gap-2">
+                    <span className={`px-2 py-0.5 rounded-md text-[9px] font-black uppercase tracking-wider border ${line.tagColor}`}>
+                      {line.tag}
+                    </span>
+                    <span className="text-[10px] text-slate-300 font-sans">
+                      Pointe-Noire
+                    </span>
+                  </div>
+                  <p className="text-slate-200 text-xs sm:text-[13px] font-sans leading-relaxed pl-2 border-l-2 border-white/20">
+                    {line.text}
+                  </p>
+                </div>
+              ))}
+
+              {/* Ligne actuellement en cours de saisie */}
+              {isTyping && currentMsgObj && (
+                <div className="space-y-1 pt-1">
+                  <div className="flex items-center gap-2">
+                    <span className={`px-2 py-0.5 rounded-md text-[9px] font-black uppercase tracking-wider border ${currentMsgObj.tagColor} animate-pulse`}>
+                      {currentMsgObj.tag}
+                    </span>
+                    <span className="text-[10px] text-emerald-300 font-sans font-semibold flex items-center gap-1">
+                      <Activity className="w-3 h-3 animate-spin text-emerald-400" />
+                      <span>Transmission en cours...</span>
+                    </span>
+                  </div>
+                  <p className="text-white font-medium text-xs sm:text-[13px] font-sans leading-relaxed pl-2 border-l-2 border-emerald-400">
+                    <span>{typedChars}</span>
+                    <span className="inline-block w-1.5 h-3.5 bg-emerald-400 animate-pulse ml-1 align-middle"></span>
+                  </p>
+                </div>
+              )}
+
+              <div ref={streamEndRef} />
+            </div>
+
+            {/* Raccourcis d'accès rapide discrets */}
+            <div className="pt-2 border-t border-white/15 space-y-2.5">
+              <div className="grid grid-cols-3 gap-2 text-[11px]">
+                <button
+                  onClick={() => navigate('/clinique')}
+                  className="py-2 px-2 rounded-xl bg-white/10 hover:bg-white/20 border border-white/15 text-white font-semibold transition cursor-pointer text-center truncate flex items-center justify-center gap-1.5 backdrop-blur-xs"
+                >
+                  <Stethoscope className="w-3 h-3 text-sky-300 shrink-0" />
+                  <span>Clinique</span>
+                </button>
+                <button
+                  onClick={() => navigate('/boutique')}
+                  className="py-2 px-2 rounded-xl bg-white/10 hover:bg-white/20 border border-white/15 text-white font-semibold transition cursor-pointer text-center truncate flex items-center justify-center gap-1.5 backdrop-blur-xs"
+                >
+                  <Wheat className="w-3 h-3 text-emerald-300 shrink-0" />
+                  <span>Poussins</span>
+                </button>
+                <button
+                  onClick={() => navigate('/devis-qhse')}
+                  className="py-2 px-2 rounded-xl bg-white/10 hover:bg-white/20 border border-white/15 text-white font-semibold transition cursor-pointer text-center truncate flex items-center justify-center gap-1.5 backdrop-blur-xs"
+                >
+                  <ShieldCheck className="w-3 h-3 text-amber-300 shrink-0" />
+                  <span>QHSE</span>
+                </button>
+              </div>
+
+              {/* Bouton direct WhatsApp */}
+              <a
+                href={`https://wa.me/${COMPANY_INFO.whatsapp}?text=Bonjour%20AGRO%20VETO%20SERVICES%2C%20je%20souhaite%20des%20informations.`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full flex items-center justify-center gap-2 py-2.5 px-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold transition shadow-md cursor-pointer"
+              >
+                <MessageCircle className="w-3.5 h-3.5 fill-current" />
+                <span>Échanger en direct sur WhatsApp</span>
+                <ChevronRight className="w-3.5 h-3.5" />
+              </a>
+            </div>
+
           </div>
 
         </div>
