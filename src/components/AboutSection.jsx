@@ -42,7 +42,7 @@ export default function AboutSection() {
                 {/* Photo de la Fondatrice / Direction */}
                 <div className="relative aspect-4/3 sm:aspect-1/1 bg-slate-950 overflow-hidden">
                   <img
-                    src={founderPhoto}
+                    src={FOUNDER_DATA.photo || founderPhoto}
                     alt={FOUNDER_DATA.name}
                     className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
                   />

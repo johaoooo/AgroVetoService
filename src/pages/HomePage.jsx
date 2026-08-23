@@ -131,7 +131,7 @@ export default function HomePage({ onAddToCart, setIsCartOpen }) {
           <div className="lg:col-span-4">
             <div className="aspect-square rounded-2xl overflow-hidden border-2 border-emerald-500/40 shadow-2xl">
               <img 
-                src={founderPhoto} 
+                src={FOUNDER_DATA.photo || founderPhoto} 
                 alt={FOUNDER_DATA.name} 
                 className="w-full h-full object-cover object-top brightness-105 contrast-105" 
               />

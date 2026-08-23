@@ -118,7 +118,7 @@ export default function ClinicPage({ showToast }) {
             <div className="rounded-3xl bg-[#fafbfc] dark:bg-[#121824] border border-slate-200/90 dark:border-slate-800 p-6 sm:p-8 shadow-xs">
               <div className="flex items-center gap-3.5 mb-6 pb-4 border-b border-slate-200 dark:border-slate-800">
                 <div className="w-12 h-12 rounded-2xl overflow-hidden border border-slate-300 dark:border-slate-700 shrink-0">
-                  <img src={founderPhoto} alt={FOUNDER_DATA.name} className="w-full h-full object-cover object-top" />
+                  <img src={FOUNDER_DATA.photo || founderPhoto} alt={FOUNDER_DATA.name} className="w-full h-full object-cover object-top" />
                 </div>
                 <div>
                   <h3 className="text-lg font-bold text-slate-900 dark:text-white">

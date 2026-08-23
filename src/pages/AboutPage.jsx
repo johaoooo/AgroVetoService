@@ -29,7 +29,7 @@ export default function AboutPage() {
             <div className="rounded-3xl bg-slate-900 text-white overflow-hidden border border-slate-800 shadow-2xl sticky top-28">
               <div className="aspect-square bg-slate-950 overflow-hidden">
                 <img
-                  src={founderPhoto}
+                  src={FOUNDER_DATA.photo || founderPhoto}
                   alt={FOUNDER_DATA.name}
                   className="w-full h-full object-cover object-top"
                 />

@@ -417,6 +417,7 @@ export const CLINIC_SERVICES = [
 export const FOUNDER_DATA = {
   name: "Dr Marie-Rose Edwige Rakié POUTYA SAIZONOU",
   title: "Fondatrice & Directrice Générale",
+  photo: "https://res.cloudinary.com/dzxesa3wi/image/upload/v1787506510/WhatsApp_Image_2026-08-23_at_18.27.25_cqdxnd.jpg",
   credentials: [
     "Docteur en Médecine Vétérinaire",
     "Spécialiste en Management QHSE (Qualité, Hygiène, Sécurité, Environnement)",
