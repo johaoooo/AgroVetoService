@@ -2,27 +2,23 @@ import React from 'react';
 import ShopSection from '../components/ShopSection';
 import { ShoppingBag, ShieldCheck, Truck, CreditCard } from 'lucide-react';
 
+import PageHero from '../components/PageHero';
+
 /**
  * Page Dédiée : Boutique & Approvisionnement en Intrants
  */
 export default function ShopPage({ onAddToCart, setIsCartOpen }) {
   return (
-    <div className="pt-28 pb-16 space-y-12">
+    <div className="pb-16 space-y-12 bg-white">
       
-      {/* En-tête de page épuré */}
-      <div className="bg-slate-900 text-white py-14 border-b border-slate-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-3">
-          <span className="text-xs font-bold text-amber-400 uppercase tracking-widest block">
-            Approvisionnement Agropastoral Sécurisé
-          </span>
-          <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight">
-            Boutique & Intrants Vétérinaires
-          </h1>
-          <p className="text-slate-300 text-sm sm:text-base max-w-2xl mx-auto">
-            Commandez vos poussins d'un jour, aliments provenderie certifiés, compléments nutritionnels et produits d'hygiène à Pointe-Noire.
-          </p>
-        </div>
-      </div>
+      {/* Hero avec photographie haute résolution */}
+      <PageHero
+        category="Approvisionnement Agropastoral Sécurisé"
+        title="Boutique & Intrants Vétérinaires"
+        subtitle="Commandez vos poussins d'un jour Cobb 500, aliments provenderie certifiés, compléments nutritionnels et produits d'hygiène à Pointe-Noire."
+        image="https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?auto=format&fit=crop&w=1920&q=80"
+        breadcrumb={[{ label: 'Boutique & Intrants' }]}
+      />
 
       {/* Rassurance de livraison & Mobile Money */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

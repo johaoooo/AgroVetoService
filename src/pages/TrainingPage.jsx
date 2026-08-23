@@ -1,27 +1,23 @@
 import React from 'react';
 import TrainingSection from '../components/TrainingSection';
 
+import PageHero from '../components/PageHero';
+
 /**
  * Page Dédiée : Centre de Formation (Teinte Douce & Reposante)
  */
 export default function TrainingPage({ showToast }) {
   return (
-    <div className="pt-28 pb-16 space-y-12 bg-[#f6f8fa]">
+    <div className="pb-16 space-y-12 bg-[#f6f8fa]">
       
-      {/* En-tête de page sobre */}
-      <div className="bg-slate-900 text-white py-14 border-b border-slate-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-3">
-          <span className="text-xs font-bold text-indigo-400 uppercase tracking-widest block">
-            Renforcement de Capacités & Autonomie
-          </span>
-          <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight">
-            Centre de Formation & Fermes-Écoles
-          </h1>
-          <p className="text-slate-300 text-sm sm:text-base max-w-2xl mx-auto">
-            Des formations 100% pratiques et certifiantes en élevage avicole, hygiène HACCP, fabrication de détergents et audits ISO.
-          </p>
-        </div>
-      </div>
+      {/* Hero avec photographie haute résolution */}
+      <PageHero
+        category="Renforcement de Capacités & Autonomie"
+        title="Centre de Formation & Fermes-Écoles"
+        subtitle="Des formations 100% pratiques et certifiantes en élevage avicole, hygiène HACCP, fabrication de détergents et audits ISO."
+        image="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=1920&q=80"
+        breadcrumb={[{ label: 'Centre de Formation' }]}
+      />
 
       {/* Rassurance pédagogique sobre */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

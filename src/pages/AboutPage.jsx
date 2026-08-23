@@ -3,27 +3,23 @@ import { Link } from 'react-router-dom';
 import { FOUNDER_DATA, COMPANY_INFO } from '../data/companyData';
 import founderPhoto from '../assets/dr_poutya.jpeg';
 
+import PageHero from '../components/PageHero';
+
 /**
  * Page Dédiée : À Propos de la Fondatrice & Statuts OHADA
  */
 export default function AboutPage() {
   return (
-    <div className="pt-28 pb-20 space-y-16 bg-[#f6f8fa]">
+    <div className="pb-20 space-y-16 bg-[#f6f8fa]">
       
-      {/* En-tête de page sobre */}
-      <div className="bg-slate-900 text-white py-14 border-b border-slate-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-3">
-          <span className="text-xs font-bold text-amber-400 uppercase tracking-widest block">
-            Direction Générale & Gouvernance
-          </span>
-          <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight">
-            Présentation de la Fondatrice & Mot de la Direction
-          </h1>
-          <p className="text-slate-300 text-sm sm:text-base max-w-2xl mx-auto">
-            Découvrez le parcours, la vision et les engagements du Dr Marie-Rose Edwige Rakié POUTYA SAIZONOU.
-          </p>
-        </div>
-      </div>
+      {/* Hero avec photographie haute résolution */}
+      <PageHero
+        category="Direction Générale & Gouvernance"
+        title="Présentation de la Fondatrice & Direction"
+        subtitle="Découvrez le parcours, la vision et les engagements du Dr Marie-Rose Edwige Rakié POUTYA SAIZONOU."
+        image="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1920&q=80"
+        breadcrumb={[{ label: 'À Propos' }]}
+      />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
         

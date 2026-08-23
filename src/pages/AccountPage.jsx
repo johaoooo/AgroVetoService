@@ -47,11 +47,18 @@ export default function AccountPage({ currentUser, onLogout, onOpenAuthModal }) 
   const isCompany = currentUser.userType === 'company';
 
   return (
-    <div className="pt-28 pb-20 space-y-12 bg-[#f6f8fa]">
+    <div className="pb-20 space-y-12 bg-[#f6f8fa]">
       
-      {/* En-tête du Tableau de Bord */}
-      <div className="bg-slate-900 text-white py-12 border-b border-slate-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* En-tête du Tableau de Bord avec arrière-plan photo */}
+      <div className="relative pt-32 pb-14 bg-slate-950 text-white overflow-hidden border-b border-slate-800">
+        <div className="absolute inset-0 z-0 opacity-25">
+          <img
+            src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1920&q=80"
+            alt="Tableau de bord"
+            className="w-full h-full object-cover"
+          />
+        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6">
             <div className="flex items-center gap-4">
               <div className="w-14 h-14 rounded-2xl bg-emerald-600 text-white flex items-center justify-center font-extrabold text-xl shadow-lg shrink-0">

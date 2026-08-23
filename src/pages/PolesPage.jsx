@@ -11,6 +11,8 @@ import {
   ArrowRight 
 } from 'lucide-react';
 
+import PageHero from '../components/PageHero';
+
 /**
  * Page Dédiée : Nos 6 Pôles d'Activités & d'Expertise
  */
@@ -38,22 +40,16 @@ export default function PolesPage() {
   };
 
   return (
-    <div className="pt-28 pb-20 space-y-16 bg-[#f6f8fa]">
+    <div className="pb-20 space-y-16 bg-[#f6f8fa]">
       
-      {/* En-tête de page sobre */}
-      <div className="bg-slate-900 text-white py-14 border-b border-slate-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-3">
-          <span className="text-xs font-bold text-emerald-400 uppercase tracking-widest block">
-            Offre Globale & Intégrée
-          </span>
-          <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight">
-            Nos 6 Pôles d'Activités & d'Expertise
-          </h1>
-          <p className="text-slate-300 text-sm sm:text-base max-w-2xl mx-auto">
-            Une prise en charge complète de la santé animale, de la provenderie, de la transformation agroalimentaire et des normes QHSE.
-          </p>
-        </div>
-      </div>
+      {/* Hero avec photographie haute résolution */}
+      <PageHero
+        category="Offre Globale & Intégrée"
+        title="Nos 6 Pôles d'Activités & d'Expertise"
+        subtitle="Une prise en charge complète de la santé animale, de la provenderie, de la transformation agroalimentaire et des normes QHSE."
+        image="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1920&q=80"
+        breadcrumb={[{ label: 'Pôles d\'Expertise' }]}
+      />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
         
@@ -67,15 +63,15 @@ export default function PolesPage() {
               <div
                 key={pole.id}
                 id={`pole-${pole.id}`}
-                className="rounded-3xl bg-[#fafbfc] border border-slate-200/90 p-6 sm:p-10 shadow-xs space-y-6 hover:border-emerald-500/40 transition-colors"
+                className="rounded-3xl bg-white border border-slate-200 p-6 sm:p-8 shadow-sm space-y-6 hover:border-emerald-500/40 transition-all"
               >
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 pb-4">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 pb-4">
                   <div className="flex items-center gap-3.5">
                     <div className="w-12 h-12 rounded-2xl bg-emerald-100/70 text-emerald-800 flex items-center justify-center shrink-0">
                       <Icon className="w-6 h-6" strokeWidth={1.75} />
                     </div>
                     <div>
-                      <span className="text-xs font-bold text-slate-400 uppercase block">
+                      <span className="text-xs font-bold text-emerald-700 uppercase tracking-wider block">
                         Pôle Stratégique N°0{pole.id}
                       </span>
                       <h2 className="text-xl sm:text-2xl font-extrabold text-slate-900">
@@ -86,25 +82,41 @@ export default function PolesPage() {
 
                   <Link
                     to={cta.path}
-                    className="self-start sm:self-auto px-5 py-2.5 rounded-xl bg-slate-900 hover:bg-emerald-700 text-white font-bold text-xs transition-colors flex items-center gap-2 cursor-pointer shadow-xs"
+                    className="self-start sm:self-auto px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs transition-colors flex items-center gap-2 cursor-pointer shadow-xs"
                   >
                     <span>{cta.label}</span>
                     <ArrowRight className="w-3.5 h-3.5" strokeWidth={2} />
                   </Link>
                 </div>
 
-                <p className="text-slate-600 text-sm leading-relaxed font-normal">
-                  {pole.shortDesc}
-                </p>
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+                  {/* Colonne Prestations */}
+                  <div className="lg:col-span-8 space-y-4">
+                    <p className="text-slate-600 text-sm leading-relaxed">
+                      {pole.shortDesc}
+                    </p>
 
-                {/* Prestations du pôle */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-2">
-                  {pole.features.map((feature, fIdx) => (
-                    <div key={fIdx} className="p-3.5 rounded-2xl bg-[#f1f5f8] border border-slate-200/80 text-xs sm:text-sm text-slate-700 flex items-start gap-2.5">
-                      <span className="text-emerald-700 font-bold">•</span>
-                      <span>{feature}</span>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5 pt-1">
+                      {pole.features.map((feature, fIdx) => (
+                        <div key={fIdx} className="p-3 rounded-xl bg-slate-50 border border-slate-100 text-xs text-slate-700 flex items-start gap-2">
+                          <span className="text-emerald-600 font-bold">•</span>
+                          <span>{feature}</span>
+                        </div>
+                      ))}
                     </div>
-                  ))}
+                  </div>
+
+                  {/* Colonne Photo */}
+                  <div className="lg:col-span-4">
+                    <div className="h-48 sm:h-56 w-full rounded-2xl overflow-hidden shadow-sm bg-slate-100">
+                      <img
+                        src={pole.image}
+                        alt={pole.title}
+                        className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                        loading="lazy"
+                      />
+                    </div>
+                  </div>
                 </div>
               </div>
             );
