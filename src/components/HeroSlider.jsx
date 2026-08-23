@@ -192,11 +192,8 @@ export default function HeroSlider() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30 to-transparent"></div>
 
-                {/* Titre immersif sur le bas de l'image */}
+                {/* Titre immersif sur le bas de l'image (sans aucun badge ni surtitre) */}
                 <div className="absolute bottom-3 left-4 right-4">
-                  <span className="text-[10px] font-extrabold tracking-widest text-emerald-300 uppercase block mb-0.5">
-                    {currentItem.category}
-                  </span>
                   <h3 className="text-base sm:text-lg font-extrabold text-white leading-tight drop-shadow-md">
                     {currentItem.title}
                   </h3>
