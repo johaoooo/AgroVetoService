@@ -8,15 +8,13 @@ import {
   Building2, 
   CheckCircle2, 
   ArrowRight,
-  Layers
+  Layers,
+  MapPin
 } from 'lucide-react';
 import { POLES } from '../data/companyData';
 
 /**
- * Composant PolesSection (Les 6 Pôles d'Expertise & Activités)
- * - Navigation par onglets ou vue en grille
- * - Détail exhaustif des sous-activités de chaque pôle
- * - Actions directes pour commander ou demander un devis
+ * Composant PolesSection — Les 6 Pôles d'Expertise avec Images & Textes Organisés
  */
 export default function PolesSection({ onAction, onOpenModal }) {
   const [activePoleId, setActivePoleId] = useState(1);
@@ -55,27 +53,22 @@ export default function PolesSection({ onAction, onOpenModal }) {
   };
 
   return (
-    <section id="poles" className="py-20 bg-white relative">
+    <section id="poles" className="py-20 bg-slate-50 relative border-t border-slate-200/70">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* En-tête de section */}
-        <div className="text-center max-w-3xl mx-auto mb-14 space-y-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-100 text-sky-800 text-xs font-bold uppercase tracking-wider">
-            <Layers className="w-3.5 h-3.5 text-sky-600" />
-            <span>Offre Globale & Intégrée</span>
-          </div>
-
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-            Nos <span className="text-sky-700">6 Pôles d'Expertise</span> Métier
+        <div className="text-center max-w-3xl mx-auto mb-12 space-y-3">
+          <h2 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
+            Nos <span className="text-emerald-700">6 Pôles d'Expertise</span> Métier
           </h2>
 
-          <p className="text-base sm:text-lg text-slate-600 font-normal">
+          <p className="text-base text-slate-600 font-normal">
             De la santé animale à la sécurité de l'assiette du consommateur : une couverture intégrale et scientifique de la chaîne de valeur agropastorale et industrielle.
           </p>
         </div>
 
-        {/* Boutons sélecteurs des 6 Pôles (Onglets Desktop & Mobile scrollable) */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-10 no-scrollbar justify-start lg:justify-center">
+        {/* Onglets sélecteurs des 6 Pôles */}
+        <div className="flex items-center gap-2.5 overflow-x-auto pb-3 mb-8 no-scrollbar justify-start lg:justify-center">
           {POLES.map((pole, index) => {
             const Icon = iconList[index];
             const isActive = pole.id === activePoleId;
@@ -83,10 +76,10 @@ export default function PolesSection({ onAction, onOpenModal }) {
               <button
                 key={pole.id}
                 onClick={() => setActivePoleId(pole.id)}
-                className={`flex items-center gap-2.5 px-4 py-3 rounded-2xl text-xs sm:text-sm font-bold whitespace-nowrap transition-all shrink-0 ${
+                className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap transition-all cursor-pointer ${
                   isActive
-                    ? 'bg-slate-900 text-white shadow-lg shadow-slate-900/20 scale-102'
-                    : 'bg-slate-100 hover:bg-slate-200 text-slate-700'
+                    ? 'bg-slate-900 text-white shadow-md'
+                    : 'bg-white hover:bg-slate-200/70 text-slate-700 border border-slate-200'
                 }`}
               >
                 <Icon className={`w-4 h-4 ${isActive ? 'text-emerald-400' : 'text-slate-500'}`} />
@@ -96,103 +89,100 @@ export default function PolesSection({ onAction, onOpenModal }) {
           })}
         </div>
 
-        {/* Carte détaillée du Pôle actif */}
-        <div className="rounded-3xl bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white p-6 sm:p-10 shadow-2xl border border-slate-700 relative overflow-hidden">
-          
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        {/* Carte détaillée du Pôle avec Photographie & Contenu structuré */}
+        <div className="rounded-3xl bg-white text-slate-900 p-6 sm:p-8 md:p-10 shadow-lg border border-slate-200 overflow-hidden">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
             
             {/* Colonne Gauche : Présentation et Prestations */}
-            <div className="lg:col-span-8 space-y-6">
+            <div className="lg:col-span-7 space-y-6">
               
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-2xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 flex items-center justify-center">
-                  <CurrentIcon className="w-6 h-6" />
+                <div className="w-11 h-11 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0 font-bold">
+                  <CurrentIcon className="w-5 h-5" />
                 </div>
                 <div>
-                  <span className="text-xs font-bold text-amber-400 uppercase tracking-widest">
+                  <span className="text-xs font-bold text-emerald-700 uppercase tracking-wider block">
                     Pôle Stratégique N°0{currentPole.id}
                   </span>
-                  <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+                  <h3 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
                     {currentPole.title}
                   </h3>
                 </div>
               </div>
 
-              <p className="text-slate-300 text-base leading-relaxed">
+              <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
                 {currentPole.shortDesc}
               </p>
 
-              {/* Liste à puces des fonctionnalités / prestations du pôle */}
-              <div className="space-y-3 pt-2">
+              {/* Liste structurée des prestations */}
+              <div className="space-y-2.5 pt-1">
                 {currentPole.features.map((feature, idx) => (
-                  <div key={idx} className="flex items-start gap-3 p-3 rounded-xl bg-slate-800/60 border border-slate-700/60">
-                    <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
-                    <span className="text-sm text-slate-200 leading-snug">{feature}</span>
+                  <div key={idx} className="flex items-start gap-2.5 p-3 rounded-xl bg-slate-50 border border-slate-100">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                    <span className="text-xs sm:text-sm text-slate-700 leading-snug">{feature}</span>
                   </div>
                 ))}
               </div>
 
-              {/* Bouton d'action contextuel selon le pôle */}
-              <div className="pt-4 flex flex-wrap gap-4">
+              {/* Bouton d'action */}
+              <div className="pt-3 flex flex-wrap gap-3">
                 <button
                   onClick={() => handlePoleCta(currentPole.code)}
-                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm shadow-lg shadow-emerald-950/40 transition-all hover:translate-x-1"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm shadow-md transition cursor-pointer"
                 >
                   <span>
                     {currentPole.code === 'SANTE_ANIMALE' ? 'Prendre RDV à la Clinique' :
-                     currentPole.code === 'QHSE_RSE' ? 'Demander un Devis d\'Audit ISO' :
-                     currentPole.code === 'FORMATION' ? 'Consulter le Programme de Formation' :
-                     'Voir les Produits & Prestations'}
+                     currentPole.code === 'QHSE_RSE' ? 'Demander un Devis d\'Audit' :
+                     currentPole.code === 'FORMATION' ? 'Programme de Formation' :
+                     'Voir les Produits & Intrants'}
                   </span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
 
                 <button
                   onClick={() => onAction('contact')}
-                  className="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold text-sm border border-slate-700 transition-colors"
+                  className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-xs sm:text-sm transition cursor-pointer"
                 >
-                  <span>Poser une question technique</span>
+                  <span>Contacter un expert</span>
                 </button>
               </div>
 
             </div>
 
-            {/* Colonne Droite : Carte récapitulative & Contact rapide */}
-            <div className="lg:col-span-4 space-y-4">
+            {/* Colonne Droite : Photographie Haute Résolution du Pôle & Badge Qualité */}
+            <div className="lg:col-span-5 space-y-4">
               
-              <div className="rounded-2xl bg-slate-800/80 border border-slate-700 p-6 space-y-4">
-                <h4 className="text-xs font-bold uppercase tracking-wider text-emerald-400">
-                  Engagement Qualité Pôle {currentPole.id}
-                </h4>
-                <p className="text-xs text-slate-300 leading-relaxed">
-                  Toutes les interventions de ce pôle sont supervisées par des praticiens et ingénieurs qualifiés sous le contrôle de la direction médicale et QHSE.
-                </p>
-                <div className="pt-2 border-t border-slate-700/80 flex items-center justify-between text-xs">
-                  <span className="text-slate-400">Localisation :</span>
-                  <span className="font-bold text-white">Socoprise, Pointe-Noire</span>
+              {/* Photo du Pôle */}
+              <div className="relative h-64 sm:h-80 w-full rounded-2xl overflow-hidden shadow-md bg-slate-100">
+                <img
+                  src={currentPole.image}
+                  alt={currentPole.title}
+                  className="w-full h-full object-cover transition-transform duration-700 hover:scale-103"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-950/20 to-transparent"></div>
+                
+                <div className="absolute bottom-4 left-4 right-4 text-white">
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-300 block mb-0.5">
+                    Activité Terrain
+                  </span>
+                  <h4 className="text-sm font-bold leading-snug drop-shadow-sm">
+                    {currentPole.title.split(',')[0]}
+                  </h4>
                 </div>
               </div>
 
-              <div className="rounded-2xl bg-emerald-950/50 border border-emerald-800/60 p-6 space-y-3">
-                <h4 className="text-sm font-bold text-emerald-300 flex items-center gap-2">
-                  <Sparkles className="w-4 h-4 text-amber-400" />
-                  <span>Besoin d'un accompagnement ?</span>
-                </h4>
-                <p className="text-xs text-emerald-100/80">
-                  Notre équipe se déplace sur vos sites d'élevage ou dans vos usines agroalimentaires.
-                </p>
-                <button
-                  onClick={() => onAction('contact')}
-                  className="w-full py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold transition-colors"
-                >
-                  Prendre contact maintenant
-                </button>
+              {/* Bloc engagement qualité */}
+              <div className="p-4 rounded-xl bg-slate-50 border border-slate-200/80 flex items-center justify-between text-xs text-slate-600">
+                <div className="flex items-center gap-1.5 font-medium">
+                  <MapPin className="w-3.5 h-3.5 text-emerald-600" />
+                  <span>Siège Socoprise, Pointe-Noire</span>
+                </div>
+                <span className="font-bold text-slate-800">Supervision Médicale & QHSE</span>
               </div>
 
             </div>
 
           </div>
-
         </div>
 
       </div>

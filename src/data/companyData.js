@@ -133,6 +133,7 @@ export const POLES = [
     title: "Santé Animale, Clinique & Pharmacie Vétérinaire",
     shortDesc: "Soins médicaux, chirurgie, intrants certifiés, provenderie de pointe et suivi zootechnique.",
     color: "blue",
+    image: "https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&w=800&q=80",
     features: [
       "Clinique Vétérinaire : Soins médicaux, chirurgies, vaccinations, urgences 24/7 et suivi d'élevage.",
       "Pharmacie Vétérinaire & Intrants : Médicaments homologués, vaccins, antiparasitaires et compléments nutritionnels.",
@@ -148,6 +149,7 @@ export const POLES = [
     title: "Management QHSE, RSE & Externalisation",
     shortDesc: "Audit, diagnostic normatif et accompagnement à la certification des entreprises.",
     color: "emerald",
+    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80",
     features: [
       "Conseil & Audits Normatifs : Accompagnement ISO 9001 (Qualité), ISO 14001 (Environnement), ISO 45001 (Santé/Sécurité au travail), ISO 22000 & HACCP.",
       "Offre « QHSE Partagé » : Externalisation complète de la fonction QHSE pour les PME et industries à coût maîtrisé.",
@@ -161,6 +163,7 @@ export const POLES = [
     title: "Agroalimentaire & Qualité Sanitaire",
     shortDesc: "Transformation saine, conservation et mise en conformité sanitaire SPS.",
     color: "amber",
+    image: "https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=800&q=80",
     features: [
       "Transformation & Conservation : Valorisation, séchage moderne, pasteurisation et conditionnement alimentaire.",
       "Conformité SPS : Audit de traçabilité et alignement sur les normes Sanitaires et Phytosanitaires internationales.",
@@ -173,6 +176,7 @@ export const POLES = [
     title: "Cosmétique, Hygiène & Artisanat",
     shortDesc: "Formulation et fabrication locale de détergents, produits d'hygiène et soins.",
     color: "purple",
+    image: "https://images.unsplash.com/photo-1608248597359-0091873130d2?auto=format&fit=crop&w=800&q=80",
     features: [
       "Formulation & Fabrication : Savons liquides et solides, détergents professionnels et désinfectants de surface.",
       "Soins Cosmétiques Éco-responsables : Valorisation des beurres et huiles végétales locales.",
@@ -185,6 +189,7 @@ export const POLES = [
     title: "Centre de Formation & Renforcement de Capacités",
     shortDesc: "Programmes certifiants pratiques pour éleveurs, techniciens et cadres d'entreprise.",
     color: "indigo",
+    image: "https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=800&q=80",
     features: [
       "Modules Élevage & Aviculture : Conduite d'un cheptel avicole, alimentation, prophylaxie et gestion technico-économique.",
       "Modules QHSE & Hygiène : Maîtrise de la méthode HACCP, gestes de premiers secours au travail, auditeur interne ISO.",
@@ -198,6 +203,7 @@ export const POLES = [
     title: "Événementiel Professionnel & Commerce Général",
     shortDesc: "Organisation de foires, colloques scientifiques, négoce et représentation commerciale.",
     color: "rose",
+    image: "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=800&q=80",
     features: [
       "Événements Scientifiques & Salons : Régie de foires agricoles, symposiums vétérinaires et expositions B2B.",
       "Négoce & Représentation Commerciale : Distribution de marques d'intrants leaders et équipements agricoles.",
